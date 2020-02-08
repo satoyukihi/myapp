@@ -11,6 +11,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'bootstrap','~>4.1.1'
 gem 'bcrypt',         '3.1.12'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
