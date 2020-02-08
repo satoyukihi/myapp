@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def new
     #新規ユーザ登録ページ
-    #@user =User.newフォームからcreateにデーターを渡す
+    @user =User.new#フォームからcreateにデーターを渡す
   end
   
   def create
