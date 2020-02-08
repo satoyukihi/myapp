@@ -4,5 +4,6 @@ ja:
       user:
     attributes:
       user:
-        name: ユーザー名
-        email: メールアドレス
+       name: ユーザー名
+       email: メールアドレス
+       password_confirmation: password（確認）
