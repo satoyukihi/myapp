@@ -1,0 +1,25 @@
+<% content_for(:html_title) { 'Myごはん-ログイン' } %>
+<div class="container ">
+ <h1 class="new">ログイン</h1>
+
+ <div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= form_with scope: :session, url:login_path, local: true do |f| %>
+
+  <div class = 'form-group'>
+      <%= f.label :email, "E-mail" %>
+      <%= f.email_field :email, class: 'form-control' , id:'email'%>
+  </div>
+  <div class = 'form-group'>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control',id: 'password' %>
+  </div>
+      
+      
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    <% end %>
+    
+    <p> <%= link_to "ユーザー新規作成", signup_path %></p>
+    </div>
+  </div>
+</div>
