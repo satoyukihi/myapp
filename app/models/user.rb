@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   #ユーザーセーブ前にemailをすべて小文字にする
   before_save { self.email = email.downcase }
   #名前空＋長さ50

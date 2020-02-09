@@ -2,8 +2,14 @@ ja:
   activerecord:
     models:
       user:
+      micropost:
     attributes:
       user:
        name: ユーザー名
        email: メールアドレス
-       password_confirmation: password（確認）
+       password: パスワード
+       password_confirmation: 確認のパスワード
+      micropost:
+       title: タイトル
+       content: 本文
+       
