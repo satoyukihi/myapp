@@ -1,11 +1,14 @@
 <% content_for(:html_title) { 'Myごはん-マイページ' } %>
 
 
-<div class="main user-show">
-  <div class="container">
-    <div class="user">
-      <h2><%= @user.name %></h2>
-      <%= link_to("編集", "/users/#{@user.id}/edit") %>
-    </div>
-  </div>
-</div>
+<div class="show container">
+    <div class="show4">
+ <p class="show1 text-white bg-dark">ユーザー情報</p>
+
+ <p class="show2">ユーザ名</p>
+ <p class="show3"><%= @user.name %></p>
+ 
+ 
+ <p><%= link_to("編集ページへ","/users/#{@user.id}/edit") %></p>
+ </div>
+ <p><%= link_to("トップに戻る",root_url)%></p>

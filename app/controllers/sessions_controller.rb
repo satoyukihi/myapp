@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
      log_in user
      flash[:success] = "ログイン成功‼"
-     redirect_to root_path
+     redirect_back_or root_path
     end
   end
   

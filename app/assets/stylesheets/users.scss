@@ -28,58 +28,44 @@ input {
   padding-top: 30px;
 }
 
-/* show */
-
-
-
-.user {
-  margin-bottom: 20px;
+.show {
+  text-align: center;
+  width: 60%;
+  /*左も右も20%ずつ*/
+  margin: 30px 20%;
+  padding: 15px;
 }
 
-.user h2 {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
+.show1{
+  padding: 15px 0px;
 }
 
-.user p {
-  font-size: 13px;
-  margin-bottom: 15px;
+.show2{
+  border-left: 5px solid #426579;
+  padding: 7px;
+  margin: 0px 0px 0px 10px;
+  text-align: left;
 }
 
-.user a {
-  color: #8899a6;
-  text-decoration: underline;
-  font-weight: 200;
+.show3{
+  text-align: left;
+  margin: 0px 0px 0px 10px;
+  padding-top: 7px;
 }
 
-.user span {
-  color: #afb6bf;
-  font-weight: 200;
-  padding: 0 6px 0 8px;
+.show4{
+  border : solid 2px #333 ;
 }
 
-.user-tabs {
-  margin-top: 40px;
-  background-color: white;
-  overflow: hidden;
-  box-shadow: 0 2px 6px #c1ced7;
+/*home*/
+
+.home{
+  padding-top: 40px;
+  p{
+    text-align: center;
+  }
 }
 
-.user-tabs li {
-  float: left;
-}
-
-.user-tabs li.active {
-  border-bottom: 2px solid #3ecdc6;
-}
-
-.user-tabs li.active a {
-  color: #57575f;
-}
-
-.user-tabs a {
-  display: inline-block;
-  padding: 16px 30px;
-  color: #afb6bf;
+.home h1{
+  text-align: center;
 }
