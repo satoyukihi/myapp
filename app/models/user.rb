@@ -11,6 +11,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   #authenticateメゾットが使える。パスワード一致でUserオブジェクトを返す。パスワードのバリテーションも追加
   has_secure_password
-  #空でない＋最小6文字
-  validates :password, presence: true, length: { minimum: 6 }
+  #空でない＋最小6文字＋ユーザー情報編集の際にパスワードがからでもOK
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 end
