@@ -14,4 +14,8 @@ class User < ApplicationRecord
   has_secure_password
   #空でない＋最小6文字＋ユーザー情報編集の際にパスワードがからでもOK
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
 end

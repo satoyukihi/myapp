@@ -12,6 +12,8 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'bootstrap','~>4.1.1'
 gem 'bcrypt',         '3.1.12'
 gem 'rails-i18n'
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
@@ -33,6 +35,7 @@ group :test do
 end
 
 group :production do
+  gem 'fog', '1.42'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
