@@ -14,6 +14,7 @@ gem 'bcrypt',         '3.1.12'
 gem 'rails-i18n'
 gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri

@@ -9,12 +9,6 @@ class UsersController < ApplicationController
   end
   
   def create
-    #データーを受け取る
-    #データーベースにセーブ
-    #フラッシュ
-    #リダイレクトホームページ
-    #失敗
-    #もう一度　render new
     @user = User.new(user_params)
     if @user.save
       log_in @user
@@ -27,7 +21,7 @@ class UsersController < ApplicationController
   
   def show
     @user =User.find(params[:id])
-    @microposts = @user.microposts
+    @microposts = @user.microposts.page(params[:page]).per(1)
   end
   
   def edit
