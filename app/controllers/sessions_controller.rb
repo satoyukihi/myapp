@@ -8,6 +8,9 @@ class SessionsController < ApplicationController
      log_in user
      flash[:success] = "ログイン成功‼"
      redirect_back_or root_path
+    else
+      flash.now[:danger] = 'メールアドレスかパスワードが間違っています。'
+      render 'new'
     end
   end
   

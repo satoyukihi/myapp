@@ -1,3 +1,4 @@
+<% content_for(:html_title) { 'Myごはん' } %>
 <main role="main" class="container">
   
   <div class="home">
@@ -7,9 +8,21 @@
       <p><%= link_to "Myごはんを始める>", " signup", class:"btn" %></p>
       <% end %>
   </div>
-  
-  <div class="col-md-8">
-      <h3>投稿一覧</h3>
-      <%= render 'shared/feed' %>
-  </div>
 </main>
+  
+  <div class="microposts">
+      <% if@microposts.any? %>
+      
+         <ol class="microposts">
+            <%= link_to "新規投稿",new_micropost_path , class:"btn page-link text-dark d-inline-block" %></p>
+            <%= paginate @microposts %>
+            <%= page_entries_info @microposts%>
+            <%= render @microposts%>
+            <%= paginate @microposts %>
+         </ol>
+         
+         
+      <% end %>
+      
+  </div>
+

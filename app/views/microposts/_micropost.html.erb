@@ -1,15 +1,33 @@
 
 
-<li=id="micropost-<%= micropost.id %>">
-  <span class="imge"><%= image_tag micropost.picture.url if micropost.picture? %></span>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="title"><%= micropost.title %></span>
-  <span class="content"><%= micropost.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> 
-    <% if current_user?(micropost.user) %>
-      <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "投稿を削除しますか?" } %>
-    <% end %>
-  </span>
-</li>
+
+<div class="card mb-3" style="max-width: 800px;">
+  <div class="row no-gutters">
+    <div class="col-md-4 microimage">
+      <%= image_tag micropost.picture.url if micropost.picture? %>
+    </div>
+    <div class="col-md-8">
+      
+      <div class="card-body">
+        
+        <h5 class="card-title"><%= micropost.title %></h5>
+        
+        <p class="card-text"><%= micropost.content %></p>
+        
+        <p class="card-time"><small class="text-muted">
+          <%= time_ago_in_words(micropost.created_at) %>前に投稿</small></p>
+          
+        <span class="mic">
+           <%= link_to "詳細", "#"%>
+        <% if current_user?(micropost.user)%>
+        　 
+        　  <%= link_to "編集", "#"%>
+      　 　 <%= link_to "削除", micropost, method: :delete,
+                                       data: { confirm: "投稿を削除しますか?" } %></span>
+    　　<% end %>
+    　　
+    　　
+      </div>
+    </div>
+  </div>
+</div>

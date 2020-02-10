@@ -1,5 +1,6 @@
-<% if@microposts.any? %>
+<%= link_to "新規投稿",new_micropost_path , class:"btn page-link text-dark d-inline-block" %></p>
 
+<% if@microposts.any? %>
  <%= paginate @microposts %>
  <%= page_entries_info @microposts%>
  
