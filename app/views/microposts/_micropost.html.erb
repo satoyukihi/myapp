@@ -1,6 +1,7 @@
 
 
 <li=id="micropost-<%= micropost.id %>">
+  <span class="imge"><%= image_tag micropost.picture.url if micropost.picture? %></span>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="title"><%= micropost.title %></span>
   <span class="content"><%= micropost.content %></span>
