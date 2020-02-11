@@ -1,5 +1,10 @@
 class User < ApplicationRecord
+  
+  
   has_many :microposts, dependent: :destroy
+  has_many :favorite_relationships, dependent: :destroy
+  has_many :likes, through: :favorite_relationships, source: :micropost
+  
   #ユーザーセーブ前にemailをすべて小文字にする
   before_save { self.email = email.downcase }
   #名前空＋長さ50
@@ -15,7 +20,24 @@ class User < ApplicationRecord
   #空でない＋最小6文字＋ユーザー情報編集の際にパスワードがからでもOK
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   
+  
   def feed
     Micropost.where("user_id = ?", id)
   end
+  
+  # マイクロポストをライクする
+  def like(micropost)
+    likes << micropost
+  end
+
+  # マイクロポストをライク解除する
+  def unlike(micropost)
+    favorite_relationships.find_by(micropost_id: micropost.id).destroy
+  end
+
+  # 現在のユーザーがライクしていたらtrueを返す
+  def likes?(micropost)
+    likes.include?(micropost)
+  end
+  
 end

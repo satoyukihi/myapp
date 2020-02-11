@@ -12,7 +12,10 @@
  */
  
 @import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import "users";
+
 
 /* mixins, variables, etc. */
 
@@ -71,4 +74,18 @@ position: absolute;
 
 .home{
   padding: 40px 0px 40px;
+}
+
+/* likes */
+
+.fas{
+  color: red;
+}
+.page-link:hover > .far{
+  color: red;
+}
+.iine {
+  color: red;
+  position: relative;
+  left: 60px;
 }

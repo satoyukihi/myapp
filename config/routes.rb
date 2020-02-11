@@ -8,9 +8,18 @@ Rails.application.routes.draw do
     post   '/login',   to: 'sessions#create'
     delete '/logout',  to: 'sessions#destroy'
     
-    resources :users
+    resources :users do
+      member do
+        get :likes
+      end
+    end
+  
     resources :microposts,          only: [:new, :create, :destroy]
+    resources :favorite_relationships, only: [:create, :destroy]
+    
+
+ 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+  end
 
