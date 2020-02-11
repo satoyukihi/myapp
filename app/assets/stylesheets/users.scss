@@ -62,8 +62,14 @@ input {
 }
 
 /*home*/
+
 .home{
   padding: 40px 0px 40px;
+  
+  h1{
+  text-align: center;
+  }
+  
   h5{
     margin: 20px 0px;
     text-align: center;
@@ -71,8 +77,4 @@ input {
   p{
     text-align: center;
   }
-}
-
-.home h1{
-  text-align: center;
 }
