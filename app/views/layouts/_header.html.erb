@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <% if logged_in? %>
-  <%= link_to "ようこそ#{@current_user.name}さん‼", current_user, class: "navbar-brand" %>
+  <%= link_to "ようこそ#{@current_user.name}さん‼", current_user, class: "navbar-brand far fa-laugh-beam" %>
   <% else %>
-  <%= link_to "Myごはん", root_path, class: "navbar-brand" %>
+  <%= link_to "Myごはん", root_path, class: "navbar-brand fas fa-utensils" %>
    <% end %>
  
   
@@ -17,15 +17,18 @@
     </ul>
     <ul class="navbar-nav">
       
-    <% if logged_in? %>
       
+       <% if logged_in? %>
       <li class="nav-item">
-        <%= link_to "新規投稿", new_micropost_path, class: "nav-link" %>
+        
+        <%= link_to "投稿一覧", root_path, class: "nav-link fas fa-paste" %>
+        
+        <%= link_to "新規投稿", new_micropost_path, class: "nav-link fas fa-pen" %>
       </li>
       
       <li class="nav-item">
-        <%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %>
-        <!--<a class="nav-link" href="#">ログイン</a>-->
+        <%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link fas fa-sign-out-alt" %>
+        
       </li>
       
     <% else %>
@@ -33,17 +36,14 @@
       
       
       
+      
       <li class="nav-item">
-        <%= link_to "ツイッターでログイン", "#", class: "nav-link" %>
-        <!--<a class="nav-link" href="#">ツイッターでログイン<span class="sr-only">(current)</span></a>-->
+        <%= link_to "ログイン", login_path, class: "nav-link fas fa-sign-in-alt" %>
+        
       </li>
       <li class="nav-item">
-        <%= link_to "ログイン", login_path, class: "nav-link" %>
-        <!--<a class="nav-link" href="#">ログイン</a>-->
-      </li>
-      <li class="nav-item">
-        <%= link_to "新規登録", " signup", class: "nav-link" %>
-        <!--<a class="nav-link" href="user_path">新規ユーザー登録</a>-->
+        <%= link_to "新規登録", " signup", class: "nav-link fas fa-user-plus" %>
+        
       </li>
     <% end %>
     </ul>

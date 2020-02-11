@@ -72,8 +72,9 @@ position: absolute;
 
 /*home */
 
-.home{
-  padding: 40px 0px 40px;
+
+.home12{
+margin-top: 20px;
 }
 
 /* likes */
@@ -82,10 +83,14 @@ position: absolute;
   color: red;
 }
 .page-link:hover > .far{
+  
   color: red;
 }
+  
+
 .iine {
   color: red;
-  position: relative;
-  left: 60px;
+  position: absolute;
+  right: 0px;
+  bottom: 20px;
 }
