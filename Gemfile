@@ -20,6 +20,8 @@ gem 'ransack'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
+  gem 'rspec-rails','~> 3.8.0'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
