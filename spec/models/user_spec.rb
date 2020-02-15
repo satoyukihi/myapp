@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
   end
       
   it "名前がなければ無効な状態であること" do
-    user = User.new( name: nil)
+    user = User.new(name: nil)
     user.valid?
     expect(user.errors[:name]).to include("を入力してください")
   end
@@ -113,6 +113,9 @@ RSpec.describe User, type: :model do
       expect(@user.authenticate("foobar")).to eq @user
   end
   
+  describe User do
+    it "有効なファクトリを持つこと" do
+      expect(FactoryBot.build(:user)).to be_valid
+    end
+  end
 end
-
-
