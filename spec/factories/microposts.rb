@@ -4,6 +4,7 @@ FactoryBot.define do
     title       "test"
     content     "testcontent"
     picture     Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.jpg'))
-    association :user
+    user {micropost.owner}
+    #association :user
   end
 end
