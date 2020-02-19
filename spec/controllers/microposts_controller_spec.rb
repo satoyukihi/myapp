@@ -34,12 +34,12 @@ RSpec.describe MicropostsController, type: :controller do
     end
   end
   
-=begin
+
   describe "show" do
     context "認可されているユーザーとして" do
       before do
         @user      = FactoryBot.create(:user)
-        @micropost =FactoryBot.create(:micropost)
+        @micropost = FactoryBot.create(:micropost)
       end
       
       it "正常にレスポンスを返すこと" do
@@ -105,8 +105,7 @@ RSpec.describe MicropostsController, type: :controller do
     context "認可されていないユーザーとして" do
       before do
         @user      = FactoryBot.create(:user)
-        other_user = FactoryBot.create(:user)
-        @micropost = FactoryBot.create(:micropost, user_id: other_user.id)
+        @micropost = FactoryBot.create(:micropost)
       end
       
       it "マイクロポストを削除できないこと" do
@@ -124,8 +123,7 @@ RSpec.describe MicropostsController, type: :controller do
     
     context "ゲストユーザーとして" do
       before do
-        user       = FactoryBot.create(:user)
-        @micropost = FactoryBot.create(:micropost, user_id: user.id)
+        @micropost = FactoryBot.create(:micropost)
       end
       
       it "マイクロポストを削除できないこと" do
@@ -139,5 +137,5 @@ RSpec.describe MicropostsController, type: :controller do
       end
     end  
   end
-=end
+
  end
