@@ -1,21 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe MicropostsController, type: :controller do
+  let(:user) {FactoryBot.create(:user)}
+  let(:micropost) {FactoryBot.create(:micropost)}
+  let(:micropost_params) {FactoryBot.attributes_for(:micropost)}
   
   describe "#new" do
-    context "認可されているユーザーとして" do
-      before do
-        @user =FactoryBot.create(:user)
-      end
       
       it "正常にレスポンスを返すこと" do
-        log_in_as(@user)
+        log_in_as(user)
         get :new
         expect(response).to be_success
       end
     
       it "200レスポンスを返すこと" do
-        log_in_as(@user)
+        log_in_as(user)
         get :new
         expect(response).to have_http_status "200"
      end
@@ -32,56 +31,43 @@ RSpec.describe MicropostsController, type: :controller do
         expect(response).to redirect_to "/login"
       end
     end
-  end
+  
   
 
   describe "show" do
-    context "認可されているユーザーとして" do
-      before do
-        @user      = FactoryBot.create(:user)
-        @micropost = FactoryBot.create(:micropost)
-      end
-      
+    
       it "正常にレスポンスを返すこと" do
-        log_in_as(@user)
-        get :show, params: {id: @micropost.id}
+        log_in_as(user)
+        get :show, params: {id: micropost.id}
         expect(response).to be_success
       end
       
       it "認可されていないユーザーとしてレスポンスを返すこと" do
-        get :show, params: {id: @micropost.id}
+        get :show, params: {id: micropost.id}
         expect(response).to be_success
        end
      end
-  end
+  
   
   describe "create" do
     context "認可されているユーザーとして" do
-      before do
-        @user             = FactoryBot.create(:user)
-        @micropost_params = FactoryBot.attributes_for(:micropost)
-      end
       
        it "マイクロポストを作成できること" do
-        log_in_as(@user)
+        log_in_as(user)
          expect{
-         post :create , params:{micropost: @micropost_params}}.to change(@user.microposts, :count).by(1)
+         post :create , params:{micropost: micropost_params}}.to change(user.microposts, :count).by(1)
         end
     end    
     
     context"認可されていないユーザーとして" do
       
-      before do
-        @micropost_params =FactoryBot.attributes_for(:micropost)
-      end
-      
       it "302レスポンスを返すこと" do
-        post :create , params:{micropost: @micropost_params}
+        post :create , params:{micropost: micropost_params}
         expect(response).to have_http_status "302"
       end
       
       it "ログイン画面にリダイレクトすること" do
-        post :create , params:{micropost: @micropost_params}
+        post :create , params:{micropost: micropost_params}
         expect(response).to redirect_to "/login"
       end
     end  
@@ -94,6 +80,7 @@ RSpec.describe MicropostsController, type: :controller do
         @user      = FactoryBot.create(:user)
         @micropost = FactoryBot.create(:micropost, user_id: @user.id)
       end
+        
       
        it "マイクロポストを削除できること" do
          log_in_as(@user)
@@ -103,39 +90,35 @@ RSpec.describe MicropostsController, type: :controller do
     end
     
     context "認可されていないユーザーとして" do
-      before do
-        @user      = FactoryBot.create(:user)
-        @micropost = FactoryBot.create(:micropost)
-      end
       
       it "マイクロポストを削除できないこと" do
-        log_in_as(@user)
+        log_in_as(user)
+        micropost
         expect{
-        delete :destroy , params:{ id: @micropost.id}}.to_not change(Micropost, :count)
+        delete :destroy , params:{ id: micropost.id}}.to_not change(Micropost, :count)
       end 
       
       it "ホーム画面にリダイレクトすること" do
-        log_in_as(@user)
-        delete :destroy , params:{id: @micropost.id}
+        log_in_as(user)
+        micropost
+        delete :destroy , params:{id: micropost.id}
         expect(response).to redirect_to "/"
       end
     end  
     
     context "ゲストユーザーとして" do
-      before do
-        @micropost = FactoryBot.create(:micropost)
-      end
       
       it "マイクロポストを削除できないこと" do
+        micropost
         expect{
-        delete :destroy , params:{ id: @micropost.id}}.to_not change(Micropost, :count)
+        delete :destroy , params:{ id: micropost.id}}.to_not change(Micropost, :count)
       end 
       
       it "ホーム画面にリダイレクトすること" do
-        delete :destroy , params:{id: @micropost.id}
+        micropost
+        delete :destroy , params:{id: micropost.id}
         expect(response).to redirect_to "/login"
       end
     end  
   end
-
- end
+end

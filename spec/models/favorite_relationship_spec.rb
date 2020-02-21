@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe FavoriteRelationship, type: :model do
+  
   it "マイクロポストidとユーザーidがあれば有効であること" do
     expect(FactoryBot.build(:favorite_relationship)).to be_valid 
   end

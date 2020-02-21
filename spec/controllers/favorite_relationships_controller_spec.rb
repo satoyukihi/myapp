@@ -1,22 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe FavoriteRelationshipsController, type: :controller do
-
+      let(:user)        {FactoryBot.create(:user)}
+      let(:micropost)   {FactoryBot.create(:micropost)}
+      let(:iine_params) {FactoryBot.attributes_for(
+                                 :favorite_relationship, 
+                                 user_id: user.id, 
+                            micropost_id: micropost.id)}
+                            
   describe "create" do
+                            
     context "認可されているユーザーとして" do
-      before do
-        @user             = FactoryBot.create(:user)
-        @micropost        = FactoryBot.create(:micropost)
-      end
       
        it "いいねできること" do
-        log_in_as(@user)
+        log_in_as(user)
          expect{
-         post :create , params:{user_id: @user.id, micropost_id: @micropost.id}}.to change(@user.likes, :count).by(1)
+         post :create , params: iine_params}.to change(user.likes, :count).by(1)
        end
-       
-       
     end
+    
     context"認可されていないユーザーとして" do
       
       it "302レスポンスを返すこと" do
@@ -37,8 +39,7 @@ RSpec.describe FavoriteRelationshipsController, type: :controller do
     context "認可されているユーザーとして" do
       before do
         @user             = FactoryBot.create(:user)
-        @other_user       = FactoryBot.create(:user)
-        @micropost        = FactoryBot.create(:micropost, user_id: @other_user.id)
+        @micropost        = FactoryBot.create(:micropost)
         @like      = FactoryBot.create(:favorite_relationship, user_id: @user.id, micropost_id: @micropost.id )
       end
       

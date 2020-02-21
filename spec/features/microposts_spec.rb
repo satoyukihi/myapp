@@ -5,11 +5,7 @@ RSpec.feature "Microposts", type: :feature do
       user = FactoryBot.create(:user)
       
       
-      visit root_path
-      click_link "ログイン"
-      fill_in "email", with: user.email
-      fill_in "password", with: user.password
-      click_button "ログイン"
+      sign_in_as user
       
       expect{
           click_link "新規投稿"

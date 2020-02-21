@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  
   describe "#new" do
     it "正常にレスポンスを返すこと" do
       get :new
@@ -15,23 +16,25 @@ RSpec.describe UsersController, type: :controller do
  end
  
  describe "#create" do
+   
    before "新規ユーザー登録" do
      @user_params =FactoryBot.attributes_for(:user)
    end
    
-    it "ユーザー作成できること" do
+    it "ユーザーを作成できること" do
       expect{
          post :create , params:{user: @user_params}}.to change(User, :count).by(1)
     end
 
   
-   it "作成後ホームページに戻ること" do
+   it "ユーザー作成後ホームページに戻ること" do
      post :create , params:{user: @user_params}
      expect(response).to redirect_to "/"
    end
  end
  
  describe"show" do
+   
     before do
      @user = FactoryBot.create(:user)
    end
@@ -48,6 +51,7 @@ RSpec.describe UsersController, type: :controller do
   end
   
   describe "#edit" do
+    
    before "認可されているユーザーとして" do
      @user=FactoryBot.create(:user)
    end
