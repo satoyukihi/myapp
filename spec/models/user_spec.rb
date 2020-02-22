@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
       
     user =User.new(
       name:                  "Jane",
-      email:                 "tster@example.com",
+      email:                 "TSTER@example.com",
       password:              "foobar",
       password_confirmation: "foobar",
       )

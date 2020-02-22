@@ -13,13 +13,13 @@ RSpec.feature "Microposts", type: :feature do
           fill_in "micropost[content]", with: "Test content"
           attach_file "micropost[picture]", "#{Rails.root}/spec/fixtures/test.jpg"
           click_button "投稿！"
+        }.to change(user.microposts, :count).by(1)
           
-          
+        aggregate_failures do
           expect(page).to have_content "投稿しました!"
-          expect(page).to have_content "Test Micropost"
+          expect(page).to have_content "Test content"
           expect(page).to have_content "#{user.name}"
-        
-      }.to change(user.microposts, :count).by(1)
+        end
       
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "FavoriteRelationships", type: :feature do
 
-  scenario "ユーザーがマイクロポストにいいねする", js: true do
+  scenario "ユーザーがマイクロポストにいいねするして解除", js: true do
     user = FactoryBot.create(:user)
     micropost  = FactoryBot.create(:micropost)
      
@@ -16,5 +16,10 @@ RSpec.feature "FavoriteRelationships", type: :feature do
       find('.new_favorite_relationship').click
       sleep 0.5
       }.to change(user.likes, :count).by(1)
-  end
-end
+      
+      expect{
+      find('.edit_favorite_relationship').click
+      sleep 0.5
+      }.to change(user.likes, :count).by(-1)
+    end
+ end
