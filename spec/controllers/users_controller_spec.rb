@@ -7,7 +7,6 @@ RSpec.describe UsersController, type: :controller do
       get :new
       expect(response).to be_success
     end
-
   
    it "200レスポンスを返すこと" do
      get :new
@@ -100,7 +99,7 @@ RSpec.describe UsersController, type: :controller do
        
       context"別のユーザーとして" do
         
-        it "ユーザー情報を編集できないこと" do
+        it "302レスポンスを返すこと" do
          log_in_as(@other_user)
           patch :update, params: {id: @user.id, user: @user_params}
           expect(response).to have_http_status "302"

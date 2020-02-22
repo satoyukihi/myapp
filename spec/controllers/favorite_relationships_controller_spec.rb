@@ -3,10 +3,18 @@ require 'rails_helper'
 RSpec.describe FavoriteRelationshipsController, type: :controller do
       let(:user)        {FactoryBot.create(:user)}
       let(:micropost)   {FactoryBot.create(:micropost)}
+      
+      let(:iine)        {FactoryBot.create(:favorite_relationship,
+                                          user_id:       user.id, 
+                                     micropost_id:  micropost.id )}
+                                     
       let(:iine_params) {FactoryBot.attributes_for(
                                  :favorite_relationship, 
                                  user_id: user.id, 
                             micropost_id: micropost.id)}
+                            
+      
+                          
                             
   describe "create" do
                             
@@ -31,37 +39,43 @@ RSpec.describe FavoriteRelationshipsController, type: :controller do
         expect(response).to redirect_to "/login"
       end
     end  
-  end  
-
+  end
 
   describe "destroy" do
     
     context "認可されているユーザーとして" do
-      before do
-        @user             = FactoryBot.create(:user)
-        @micropost        = FactoryBot.create(:micropost)
-        @like      = FactoryBot.create(:favorite_relationship, user_id: @user.id, micropost_id: @micropost.id )
-      end
       
        it "いいねを解除できること" do
-         log_in_as(@user)
+         log_in_as(user)
+         iine
          expect{
-         delete  :destroy , params:{id: @like.id, user_id: @user.id, micropost_id: @micropost.id}}.to change(@user.likes, :count).by(-1)
+         delete  :destroy , params:{id: iine.id, 
+                              user_id: user.id, 
+                         micropost_id: micropost.id}
+           
+         }.to change(user.likes, :count).by(-1)
        end
+    end   
     
     context "認可されていないユーザーとして" do
       
       it "いいねを解除できないこと" do
+        iine
         expect{
-        delete  :destroy , params:{id: @like.id, user_id: @user.id, micropost_id: @micropost.id}}.to_not change(@user.likes, :count)
+        delete  :destroy , params:{id: iine.id, 
+                              user_id: user.id, 
+                         micropost_id: micropost.id}
+          
+        }.to_not change(user.likes, :count)
       end 
       
       it "ログイン画面にリダイレクトすること" do
-        delete :destroy , params:{id: @like.id, user_id: @user.id, micropost_id: @micropost.id}
+        delete :destroy , params:{id: iine.id, 
+                             user_id: user.id, 
+                        micropost_id: micropost.id}
         expect(response).to redirect_to "/login"
       end
       
     end
   end
- end
 end

@@ -3,17 +3,14 @@ require 'rails_helper'
 RSpec.describe Micropost, type: :model do
   
   it "タイトル、本文、写真、ユーザーidがあれば有効な状態であること" do
-    
     expect(FactoryBot.build(:micropost)).to be_valid  
   end
   
-  #it "投稿順にならんでいること" do
-    #micropost = FactoryBot.create(:micropost)
-      
-    #after_micropost = FactoryBot.create(:micropost)
-      
-      #expect(after_micropost).to eq Micropost.first #1にしたらちゃんと失敗した
-    #end
+  it "投稿順にならんでいること" do
+    micropost = FactoryBot.create(:micropost)
+    after_micropost = FactoryBot.create(:micropost)
+    expect(after_micropost).to eq Micropost.first 
+  end
   
   it "ユーザーIDがなければ無効な状態であること" do
     micropost = Micropost.new(user_id: nil)
@@ -51,10 +48,5 @@ RSpec.describe Micropost, type: :model do
     micropost.valid?
     expect(micropost.errors[:picture]).to include("を入力してください")
   end 
-  
-  it "関連データー生成" do
-   micropost = FactoryBot.create(:micropost)
-   puts micropost.user.inspect
-   end
   
 end
