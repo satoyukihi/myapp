@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Myごはんへようこそ"
+      flash[:success] = "ユーザー登録完了！Myごはんへようこそ！！"
       redirect_to root_url
     else
      render 'new'
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "ユーザーを削除しました"
     redirect_to root_url
   end
   

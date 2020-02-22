@@ -20,6 +20,8 @@ RSpec.describe "Microposts", type: :system do
           expect(page).to have_content "Test content"
           expect(page).to have_content "#{user.name}"
         end
+      end              
       
-  end
+    it "マイクロポスト削除"
+    it "マイクロポスト編集"
 end
