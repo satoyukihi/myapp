@@ -18,6 +18,20 @@ RSpec.describe FavoriteRelationship, type: :model do
     expect(like.errors[:micropost_id]).to include("を入力してください")
   end
   
+  it "user_idとmicropost＿idがユニークでない場合無効な状態であること" do
+    micropost = FactoryBot.create(:micropost)
+    
+    like  = FactoryBot.create(:favorite_relationship,
+                               user_id: micropost.user_id,
+                               micropost_id: micropost.id)
+                               
+    like2 = FactoryBot.build(:favorite_relationship,
+                               user_id: micropost.user_id,
+                               micropost_id: micropost.id)
+    like2.valid?
+    expect(like2.errors[:user_id]).to include("はすでに存在します")
+  end
+  
   
   
   #it "関連データー生成" do
