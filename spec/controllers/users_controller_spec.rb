@@ -7,16 +7,11 @@ RSpec.describe UsersController, type: :controller do
       get :new
       expect(response).to be_success
     end
-  
-   it "200レスポンスを返すこと" do
-     get :new
-     expect(response).to have_http_status "200"
-   end
  end
  
  describe "#create" do
    
-   before "新規ユーザー登録" do
+   before do
      @user_params =FactoryBot.attributes_for(:user)
    end
    
@@ -26,15 +21,15 @@ RSpec.describe UsersController, type: :controller do
     end
 
   
-   it "ユーザー作成後ホームページに戻ること" do
+    it "ユーザー作成後ホームページに戻ること" do
      post :create , params:{user: @user_params}
      expect(response).to redirect_to "/"
-   end
- end
+    end
+  end
  
  describe"show" do
    
-    before do
+    before "認可されているユーザーとして"do
      @user = FactoryBot.create(:user)
    end
    
@@ -60,12 +55,6 @@ RSpec.describe UsersController, type: :controller do
       get :edit, params:{ id: @user.id}
       expect(response).to be_success
     end
-    
-    it "200レスポンスを返すこと" do
-    log_in_as(@user)
-     get :edit, params:{ id: @user.id}
-     expect(response).to have_http_status "200"
-   end
 
    context"許可されていないユーザーとして" do
      
@@ -97,7 +86,7 @@ RSpec.describe UsersController, type: :controller do
        end
      
        
-      context"別のユーザーとして" do
+      context"認可されていないユーザーとして" do
         
         it "302レスポンスを返すこと" do
          log_in_as(@other_user)
@@ -112,7 +101,7 @@ RSpec.describe UsersController, type: :controller do
       end
     
     
-      context"認可されていないユーザーとして" do
+      context"ゲストユーザーとして" do
         
         it "302レスポンスを返すこと" do
           patch :update, params: {id: @user.id, user: @user_params}
@@ -207,5 +196,4 @@ RSpec.describe UsersController, type: :controller do
      end
    end
   end
-   
 end
