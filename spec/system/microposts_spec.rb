@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Microposts", type: :feature do
-  scenario "ユーザーは新しいマイクロポストを作成する" do
+RSpec.describe "Microposts", type: :system do
+    it "ユーザーは新しいマイクロポストを作成する" do
       user = FactoryBot.create(:user)
       
       

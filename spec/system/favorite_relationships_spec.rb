@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "FavoriteRelationships", type: :feature do
+RSpec.describe "FavoriteRelationships", type: :system do
 
-  scenario "ユーザーがマイクロポストにいいねするして解除", js: true do
+  it "ユーザーがマイクロポストいいね実行、解除できる", js: true do
     user = FactoryBot.create(:user)
     micropost  = FactoryBot.create(:micropost)
      
