@@ -22,10 +22,6 @@ module SessionsHelper
     user == current_user
   end
   
-  #渡されたユーザーが管理者であればtrueを返す
-  #def admin_user(user)
-    #user.admin?
-  #end
     
   
   

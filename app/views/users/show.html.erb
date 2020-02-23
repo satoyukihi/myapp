@@ -16,7 +16,7 @@
  <p><%= link_to("編集ページへ","/users/#{@user.id}/edit") %></p>
  <% end %>
  
- <% if admin_user? %>
+ <% if admin_user? || current_user?(@user)%>
  
  <p><%= link_to "削除", @user, method: :delete,
                                 data: { confirm: "ユーザーを削除しますか?" } %></p>

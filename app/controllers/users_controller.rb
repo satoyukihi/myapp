@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :likes]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :testadmin,     only: :destroy
   
   def new
     #新規ユーザ登録ページ
@@ -73,6 +73,13 @@ class UsersController < ApplicationController
     def admin_user#管理者確認
       redirect_to(root_url) unless current_user.admin?
     end
-  
-  
+    
+    def correct_user?
+      @user = User.find(params[:id])
+      current_user?(@user)
+    end
+    
+    def testadmin
+      redirect_to(root_url) unless current_user.admin? || correct_user?
+    end
 end

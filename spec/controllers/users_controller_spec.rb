@@ -130,16 +130,23 @@ RSpec.describe UsersController, type: :controller do
           delete :destroy , params:{id: @user.id}}.to change(User, :count).by(-1)
        end
     
-    context "認可されていないユーザーとして" do
+    context "認可されているユーザーが" do
       
       
-      it "ユーザーを削除できないこと" do
+      it "ユーザー自身を削除でること" do
+        log_in_as(@user)
+        expect{
+         #delete :destroy , params:{id: @user_admin.id}}.to_not change(User, :count)
+         delete :destroy , params:{id: @user.id}}.to change(User, :count)
+      end 
+      
+      it "他のユーザーを削除できないこと" do
         log_in_as(@user)
         expect{
          delete :destroy , params:{id: @user_admin.id}}.to_not change(User, :count)
       end 
       
-      it "ホーム画面にリダイレクトすること" do
+      it "他のユーザーを削除使用とするとホーム画面にリダイレクトすること" do
         log_in_as(@user)
         delete :destroy , params:{id: @user_admin.id}
         expect(response).to redirect_to "/"
