@@ -18,7 +18,7 @@
  
  <% if admin_user? || current_user?(@user)%>
  
- <p><%= link_to "削除", @user, method: :delete,
+ <p><%= link_to "ユーザー削除", @user, method: :delete,
                                 data: { confirm: "ユーザーを削除しますか?" } %></p>
  <% end %>
  

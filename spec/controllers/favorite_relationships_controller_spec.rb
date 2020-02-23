@@ -13,9 +13,6 @@ RSpec.describe FavoriteRelationshipsController, type: :controller do
                                  user_id: user.id, 
                             micropost_id: micropost.id)}
                             
-      
-                          
-                            
   describe "create" do
                             
     context "認可されているユーザーとして" do

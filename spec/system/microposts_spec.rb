@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Microposts", type: :system do
+  let(:user)      {FactoryBot.create(:user)}
+  let(:other_user) {FactoryBot.create(:user)}
+  let(:micropost) {FactoryBot.create(:micropost, user_id: user.id)}
+  
     it "ユーザーは新しいマイクロポストを作成する" do
-      user = FactoryBot.create(:user)
-      
-      
       sign_in_as user
-      
       expect{
           click_link "新規投稿"
           fill_in "micropost[title]", with: "Test Micropost"
@@ -21,7 +21,37 @@ RSpec.describe "Microposts", type: :system do
           expect(page).to have_content "#{user.name}"
         end
       end              
+    
+    it "ユーザーはマイクロポストを削除する" do
+      micropost
+      sign_in_as user
+      expect{
+        visit root_path
+        click_link "削除"
+      }.to change(user.microposts, :count).by(-1)
+    end
+    
+    it "他ユーザーのマイクロポスト削除リンクが表示されないこと" do
+      micropost
+      sign_in_as other_user
+      visit root_path
+      expect(page).to have_content "1件の投稿が表示されています"
+      expect(page).to_not have_content "削除"
+    end
+    
+    it "ユーザーを削除すると関連するマイクロポストも削除される" do
+      micropost
+      sign_in_as user
       
-    it "マイクロポスト削除"
-    it "マイクロポスト編集"
+      expect{
+        visit root_url
+        expect(page).to have_content "1件の投稿が表示されています"
+      
+        expect{
+          visit user_path(user)
+          click_link "ユーザー削除"
+        }.to change(User, :count).by(-1)
+      }.to change(Micropost, :count).by(-1)
+      
+    end
 end

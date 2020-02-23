@@ -31,12 +31,5 @@ RSpec.describe FavoriteRelationship, type: :model do
     like2.valid?
     expect(like2.errors[:user_id]).to include("はすでに存在します")
   end
-  
-  
-  
-  #it "関連データー生成" do
-    #like = FactoryBot.build(:favorite_relationship)
-    #puts like.user.inspect
-    #puts like.micropost.inspect
-  #end
+
 end
