@@ -47,6 +47,7 @@ end
 
 group :production do
   gem 'fog', '1.42'
+  gem 'unicorn'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
