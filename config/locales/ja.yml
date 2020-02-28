@@ -8,7 +8,7 @@ ja:
        name: ユーザー名
        email: メールアドレス
        password: パスワード
-       password_confirmation: 確認のパスワード
+       password_confirmation: パスワード(確認)
       micropost: 
        title: タイトル
        content: 本文
