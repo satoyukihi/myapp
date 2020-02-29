@@ -3,21 +3,24 @@
     
     <div class = 'form-group'>
       <%= f.label :title, "タイトル" %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control',\
+          placeholder: "料理名や食材名を入れてください" %>
     </div>
    
-   <div class = 'form-group'>
+    <div class = 'form-group contentarea'>
       <%= f.label :content, "本文" %>
-      <%= f.text_area :content, class: 'form-control' %>
-   </div>
+      <%= f.text_area :content, class: 'form-control', size: "30x10",\
+         placeholder: "作った感想、味や料理のポイントなど\なんでも自由に書いて投稿しよう！" %>
+    </div>
    
-   <div class = 'form-group'>
+    <div class = 'form-group'>
       <%= f.label :picture, '料理写真' %>
-      <%= f.file_field :picture, class:"form-control-file", accept: 'image/jpeg,image/gif,image/png' %>
-   </div>
+      <%= f.file_field :picture, class:"form-control-file",\
+          accept: 'image/jpeg,image/gif,image/png' %>
+    </div>
 
-      <%= f.submit "投稿！", class: "btn btn-primary" %>
-    <% end %>
+    <%= f.submit "投稿！", class: "btn btn-primary" %>
+<% end %>
     
     
     <script type="text/javascript">
