@@ -112,9 +112,4 @@ RSpec.describe User, type: :model do
       expect(@user.authenticate("foobar")).to eq @user
   end
   
-  describe User do
-    it "有効なファクトリを持つこと" do
-      expect(FactoryBot.build(:user)).to be_valid
-    end
-  end
 end
