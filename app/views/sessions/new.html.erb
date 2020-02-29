@@ -1,7 +1,7 @@
 <% content_for(:html_title) { 'Myごはん-ログイン' } %>
 <div class="container ">
  <h1 class="new">ログイン</h1>
-
+<p class="admin">このままログインボタンを押せば管理者としてログインできます。</p>
  <div class="row">
   <div class="col-md-6 offset-md-3">
     <%= form_with scope: :session, model:@user, url:login_path, local: true do |f| %>
