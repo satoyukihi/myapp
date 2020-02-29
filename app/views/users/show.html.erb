@@ -2,13 +2,13 @@
 
 
 <div class="show container">
-    <div class="show4">
+<div class="show4">
  <p class="show1 text-white bg-dark">ユーザー情報</p>
 
  <p class="show2">ユーザ名</p>
  <p class="show3"><%= @user.name %></p>
  
-  <p class="show3">
+  <p>
 　<%= link_to "いいね一覧(#{@user.likes.count})", likes_user_path(@user), class: "nav-link" %>
   </p>
   
