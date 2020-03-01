@@ -8,7 +8,7 @@ RSpec.describe 'Microposts', type: :system do
   it 'ユーザーは新しいマイクロポストを作成する' do
     sign_in_as user
     expect do
-      click_link '新規投稿'
+      click_link '新規投稿!'
       fill_in 'micropost[title]', with: 'Test Micropost'
       fill_in 'micropost[content]', with: 'Test content'
       attach_file 'micropost[picture]', "#{Rails.root}/spec/fixtures/test.jpg"

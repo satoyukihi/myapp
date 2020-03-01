@@ -11,6 +11,8 @@ module SessionsHelper
 
   # 渡されたユーザーが管理者であればtrueを返す
   def admin_user?
+    return unless logged_in?
+
     user = current_user
     user.admin?
   end

@@ -31,6 +31,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it '正常にレスポンスを返すこと' do
+      log_in_as(@user)
       get :show, params: { id: @user.id }
       expect(response).to be_success
     end

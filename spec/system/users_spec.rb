@@ -66,6 +66,14 @@ RSpec.describe 'Users', type: :system do
     visit user_path(user)
     expect(page).to_not have_content 'ユーザー削除'
   end
+  
+  it 'ゲストユーザーで他のユーザーの詳細ページに行く' do
+    user
+    visit user_path(user)
+    expect(page).to_not have_content '#{user.name}'
+  end
+end
+    
   #   describe "マイクロポストの表示（検索、ページネーション）" do
   #
   #     it "マイクロポストのタイトル検索、ページネーションが機能していること" do
@@ -85,4 +93,4 @@ RSpec.describe 'Users', type: :system do
   #       expect(page).to have_link "次"
   #     end
   #   end
-end
+
