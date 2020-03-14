@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  include CommentActions
   before_action :logged_in_user, only: :create
   before_action :correct_user_comment,   only: :destroy
   
@@ -9,9 +10,8 @@ class CommentsController < ApplicationController
       flash[:success] = 'コメントしました'
       redirect_to @comment.micropost
     else
-    @micropost = Micropost.find(params[:micropost_id])
-    @comment_page = Comment.where(micropost_id: @micropost.id)
-    @comments = @comment_page.page(params[:page]).per(10)
+    get_comments
+    
     render template: 'microposts/show'
     end
   end

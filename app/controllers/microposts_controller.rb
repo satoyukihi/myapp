@@ -1,4 +1,5 @@
 class MicropostsController < ApplicationController
+  include CommentActions
   before_action :logged_in_user, only: %i[new create destroy]
   before_action :correct_user_micropost,   only: :destroy
 
@@ -7,10 +8,8 @@ class MicropostsController < ApplicationController
   end
 
   def show
-    @micropost = Micropost.find(params[:id])
+    get_comments
     @comment =Comment.new
-    @comment_page = Comment.where(micropost_id: @micropost.id)
-    @comments = @comment_page.page(params[:page]).per(10)
   end
 
   def create
