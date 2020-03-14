@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :comments, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :favorite_relationships, dependent: :destroy
   has_many :likes, through: :favorite_relationships, source: :micropost
