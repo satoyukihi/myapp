@@ -1,15 +1,15 @@
 class MicropostsController < ApplicationController
   include CommentActions
   before_action :logged_in_user, only: %i[new create destroy]
-  before_action :correct_user_micropost,   only: :destroy
+  before_action :correct_user_micropost, only: :destroy
 
   def new
     @micropost = Micropost.new
   end
 
   def show
-    get_comments
-    @comment =Comment.new
+    comments_get
+    @comment = Comment.new
   end
 
   def create
