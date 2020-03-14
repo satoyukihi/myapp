@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200313132252) do
+ActiveRecord::Schema.define(version: 20200314133201) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
@@ -43,6 +43,22 @@ ActiveRecord::Schema.define(version: 20200313132252) do
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
+  create_table "tag_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "micropost_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["micropost_id", "tag_id"], name: "index_tag_relationships_on_micropost_id_and_tag_id", unique: true
+    t.index ["micropost_id"], name: "index_tag_relationships_on_micropost_id"
+    t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
@@ -56,4 +72,6 @@ ActiveRecord::Schema.define(version: 20200313132252) do
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
   add_foreign_key "microposts", "users"
+  add_foreign_key "tag_relationships", "microposts"
+  add_foreign_key "tag_relationships", "tags"
 end
