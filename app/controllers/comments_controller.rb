@@ -11,18 +11,17 @@ class CommentsController < ApplicationController
       redirect_to @comment.micropost
     else
     get_comments
-    
     render template: 'microposts/show'
     end
   end
   
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:success] = 'コメントを削除しました'
     redirect_to @comment.micropost
   end
   
+  private
   def comment_params
     params.require(:comment).permit(:content)
   end
