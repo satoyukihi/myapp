@@ -113,3 +113,23 @@ margin-top: 20px;
   
   margin-top: 50px;
 }
+
+.commentdelete{
+  display:block;
+  text-align: right;
+}
+.commentname{
+  margin: 0px;
+  display:block;
+  text-align: right;
+}
+.commentcontent{
+  text-align: left;
+  vertical-align: top;
+  margin-left: 15px;
+}
+
+.commentbox{
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
