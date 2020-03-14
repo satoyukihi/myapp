@@ -9,11 +9,8 @@
     <div class="col-md-8">
       
       <div class="card-body">
-        
-        
-        
+
         <h5 class="card-title"><%= micropost.title %></h5>
-        
         
         <p class="card-text"><%= micropost.content %></p>
         
@@ -34,7 +31,9 @@
         
         
         
-           <!--<#%= link_to "詳細", micropost%>-->
+        <%= link_to "コメント(#{micropost.comments.count})", micropost%>
+        
+        
         <% if current_user?(micropost.user)%>
         　 
         　　 <%= link_to "削除", micropost, method: :delete,

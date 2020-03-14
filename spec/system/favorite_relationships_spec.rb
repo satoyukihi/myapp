@@ -14,7 +14,6 @@ RSpec.describe 'FavoriteRelationships', type: :system do
     micropost
 
     visit login_path
-    # click_link "Myごはんを始める"
     fill_in 'session[email]',    with: user.email
     fill_in 'session[password]', with: user.password
     click_button 'ログイン'

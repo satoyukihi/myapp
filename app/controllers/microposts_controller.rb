@@ -1,13 +1,15 @@
 class MicropostsController < ApplicationController
+  include CommentActions
   before_action :logged_in_user, only: %i[new create destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user_micropost, only: :destroy
 
   def new
     @micropost = Micropost.new
   end
 
   def show
-    @microposts = Micropost.find(params[:id])
+    comments_get
+    @comment = Comment.new
   end
 
   def create
@@ -16,7 +18,6 @@ class MicropostsController < ApplicationController
       flash[:success] = '投稿しました!'
       redirect_to root_url
     else
-      @feed_items = []
       render 'new'
     end
   end
@@ -33,7 +34,7 @@ class MicropostsController < ApplicationController
     params.require(:micropost).permit(:title, :content, :picture)
   end
 
-  def correct_user
+  def correct_user_micropost
     @micropost = current_user.microposts.find_by(id: params[:id])
     redirect_to root_url if @micropost.nil?
   end

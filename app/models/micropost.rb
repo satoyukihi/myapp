@@ -1,5 +1,6 @@
 class Micropost < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
   has_many :favorite_relationships, dependent: :destroy
   has_many :liked_by, through: :favorite_relationships, source: :user
   default_scope -> { order(created_at: :desc) } # 作成順から並ぶように

@@ -1,2 +1,36 @@
 <% content_for(:html_title) { 'Myごはん-投稿一覧' } %>
-<%= render @microposts %>
+<div class="micropost_show">
+<%= render @micropost %>
+</div>
+
+<div class=comment_snow>
+  <% @comments.each do |comment| %>
+  <div class="commentbox">
+    <p class="commentcontent">
+      <%= comment.content %>
+    </p>
+    <p class="commentname">
+      <%=link_to "#{comment.user.name}", comment.user %>
+      <%= time_ago_in_words(comment.created_at) %>前
+    </p>
+        
+    <% if current_user?(comment.user)%>
+      <%= link_to '削除', micropost_comment_path(@micropost, comment), id: "commentdelete", class: 'commentdelete', method: :delete %>
+    <% end %>
+  </div>   
+  <% end %>
+  <%= paginate @comments %>
+</div>
+
+<div class="comment_form">
+  <%= form_with model: [@micropost, @comment], local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    
+    <div class = 'form-group'>
+      <%= f.text_area :content, class: 'form-control',　id:'content', size: "30x5",\
+         placeholder: "コメントを記入してください" %>
+    </div>
+   
+    <%= f.submit "コメントする", class: "btn btn-primary" %>
+<% end %>
+</div>
