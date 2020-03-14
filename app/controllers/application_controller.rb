@@ -12,4 +12,6 @@ class ApplicationController < ActionController::Base
     store_location
     redirect_to login_url
   end
+  
+  
 end
