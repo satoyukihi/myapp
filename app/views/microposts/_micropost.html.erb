@@ -39,8 +39,8 @@
         
         
         <% if current_user?(micropost.user)%>
-        　 
-        　　 <%= link_to "削除", micropost, method: :delete,
+        　 <span> <%= link_to "編集", "/microposts/#{micropost.id}/edit" %></span>
+        　 <span> <%= link_to "削除", micropost, method: :delete,
             data: { confirm: "投稿を削除しますか?" } %></span>
     　　<% end %>
     　　

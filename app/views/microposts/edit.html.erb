@@ -12,15 +12,9 @@
       <%= f.text_area :content, class: 'form-control', size: "30x10",\
          placeholder: "作った感想、味や料理のポイントなど\なんでも自由に書いて投稿しよう！" %>
     </div>
-   
-    <div class = 'form-group'>
-      <%= f.label :picture, '料理写真' %>
-      <%= f.file_field :picture, class:"form-control-file",\
-          accept: 'image/jpeg,image/gif,image/png' %>
-    </div>
     
     <div class="article-tags-field">
-      <%= f.text_field :tag_ids,value: "#{@tag_list}", class: "form-control", size: "30", id:'tag_ids',\
+      <%= f.text_field :tag_ids,value: @tag_list, class: "form-control", size: "30", id:'tag_ids',\
           placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
     </div>
 
