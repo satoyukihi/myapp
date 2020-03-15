@@ -14,7 +14,9 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
+    tag_list = params[:micropost][:tag_ids].split(',')
     if @micropost.save
+      @micropost.save_tags(tag_list)
       flash[:success] = '投稿しました!'
       redirect_to root_url
     else

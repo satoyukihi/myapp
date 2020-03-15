@@ -1,4 +1,4 @@
-<%= form_with model:@micropost, local: true do |f| %>
+<%= form_with model: @micropost, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
     
     <div class = 'form-group'>
@@ -17,6 +17,11 @@
       <%= f.label :picture, '料理写真' %>
       <%= f.file_field :picture, class:"form-control-file",\
           accept: 'image/jpeg,image/gif,image/png' %>
+    </div>
+    
+    <div class="article-tags-field">
+      <%= f.text_field :tag_ids, class: "form-control", size: "30", id:'tag_ids',\
+          placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
     </div>
 
     <%= f.submit "投稿！", class: "btn btn-primary" %>
