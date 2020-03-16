@@ -32,19 +32,14 @@
           <% end %>
         </span>
         
-        
-        
-        
         <%= link_to "コメント(#{micropost.comments.count})", micropost%>
-        
-        
+      
         <% if current_user?(micropost.user)%>
         　 <span> <%= link_to "編集", "/microposts/#{micropost.id}/edit" %></span>
         　 <span> <%= link_to "削除", micropost, method: :delete,
             data: { confirm: "投稿を削除しますか?" } %></span>
     　　<% end %>
-    　　
-    　　
+    　　</span>
       </div>
     </div>
   </div>

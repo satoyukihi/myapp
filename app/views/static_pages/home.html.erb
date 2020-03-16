@@ -13,44 +13,23 @@
       <% end %>
   </div>
   <% end %>
-  
-  
 </main>
 
-
-
-　
-
-  
   <div class="microposts">
-      
-      
-         <ol class="microposts">
-           
-            <%= link_to "新規投稿!",new_micropost_path , class:"btn page-link text-dark d-inline-block fas fa-pen home12" %></p>
-            
-            <form class="form-inline my-2 my-lg-0 ml-auto">
-              <%= search_form_for @q, url: root_path do |f| %>
-               <%= f.search_field :title_cont, placeholder: '料理名等で検索...', class: "form-control my-2 my-sm-0"%>
-               <%= f.submit class: 'btn btn-primary my-2 my-sm-0 test'%>
-              <% end %>
-　         </form>
-　         <% if@microposts.any? %>
-　          
-　          <div><%= paginate @microposts %><%= page_entries_info @microposts%></div>
+    <ol class="microposts">
+      <%= link_to "新規投稿!",new_micropost_path , class:"btn page-link text-dark d-inline-block fas fa-pen home12" %></p>
+      <%= render 'tag_search'%>
+      <%= render 'title_search'%>
+        <% if@microposts.any? %>
+　        <div>
+　          <%= paginate @microposts %><%= page_entries_info @microposts%>
+　        </div>
             <%= render @microposts%>
             <%= paginate @microposts %>
          </ol>
-         
-      <%else%>
-      
-      
-　         
-　         <P>投稿がありません</P>
-         
-         
-      <% end %>
-      
+       <% else %>
+         <P>投稿がありません</P>
+       <% end %>
   </div>
   
   

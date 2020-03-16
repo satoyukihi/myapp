@@ -14,17 +14,17 @@ class Micropost < ApplicationRecord
   validate  :picture_size
 
   def save_tags(savemicropost_tags)
-    current_tags = tags.pluck(:name) unless tags.nil?
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - savemicropost_tags
     new_tags = savemicropost_tags - current_tags
 
     old_tags.each do |old_name|
-      tags.delete Tag.find_by(name: old_name)
+      self.tags.delete Tag.find_by(name: old_name)
     end
 
     new_tags.each do |new_name|
       micropost_tag = Tag.find_or_create_by(name: new_name)
-      tags << micropost_tag
+      self.tags << micropost_tag
     end
   end
   
