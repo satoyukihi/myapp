@@ -28,6 +28,10 @@ class Micropost < ApplicationRecord
     end
   end
   
+  def self.micropost_serach(search)
+    Micropost.where(['title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%"])
+  end
+  
   private
   # アップロードされた画像のサイズをバリデーションする
   def picture_size

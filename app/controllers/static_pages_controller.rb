@@ -1,9 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    # @microposts = Micropost.all.page( params[:page]).per(5)
-    #@q = Micropost.ransack(params[:q])
-    @microposts = params[:tag_id].present? ? Tag.find(params[:tag_id]).microposts : Micropost.all
-    #@microposts = @q.result(distindt: true).page(params[:page]).per(5)
+    #@microposts = params[:tag_id].present? ? Tag.find(params[:tag_id]).microposts : Micropost.all
+    @microposts =  params[:search].present? ? Micropost.micropost_serach(params[:search]) :  Micropost.all
     @microposts = @microposts.page(params[:page]).per(10)
   end
 end
