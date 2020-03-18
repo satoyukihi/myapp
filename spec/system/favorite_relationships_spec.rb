@@ -32,14 +32,10 @@ RSpec.describe 'FavoriteRelationships', type: :system do
   it 'ユーザーが削除されると関連するいいねも削除されること' do
     sign_in_as user
     iine
-    expect do
-      visit root_url
-      expect(page).to have_content '1件の投稿が表示されています'
-
-      expect  do
+    visit root_url
+    expect  do
         visit user_path(other_user)
         click_link 'ユーザー削除'
-      end.to change(User, :count).by(-1)
     end.to change(user.likes, :count).by(-1)
   end
 end

@@ -8,7 +8,7 @@ RSpec.describe 'Microposts', type: :system do
   it 'ユーザーは新しいマイクロポストを作成する' do
     sign_in_as user
     expect do
-      click_link '新規投稿!'
+      visit new_micropost_path
       fill_in 'micropost[title]', with: 'Test Micropost'
       fill_in 'micropost[content]', with: 'Test content'
       attach_file 'micropost[picture]', "#{Rails.root}/spec/fixtures/test.jpg"
@@ -35,22 +35,16 @@ RSpec.describe 'Microposts', type: :system do
     micropost
     sign_in_as other_user
     visit root_path
-    expect(page).to have_content '1件の投稿が表示されています'
     expect(page).to_not have_content '削除'
   end
 
   it 'ユーザーを削除すると関連するマイクロポストも削除される' do
     micropost
     sign_in_as user
-
+    visit root_url
     expect  do
-      visit root_url
-      expect(page).to have_content '1件の投稿が表示されています'
-
-      expect  do
-        visit user_path(user)
-        click_link 'ユーザー削除'
-      end.to change(User, :count).by(-1)
+     visit user_path(user)
+     click_link 'ユーザー削除'
     end.to change(Micropost, :count).by(-1)
   end
 end

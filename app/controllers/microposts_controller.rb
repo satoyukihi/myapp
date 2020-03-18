@@ -29,24 +29,24 @@ class MicropostsController < ApplicationController
     flash[:success] = '投稿を削除しました'
     redirect_to request.referer || current_user
   end
-  
+
   def edit
-    @micropost =Micropost.find(params[:id])
-    @tag_list =@micropost.tags.pluck(:name).join(",")
+    @micropost = Micropost.find(params[:id])
+    @tag_list = @micropost.tags.pluck(:name).join(',')
   end
 
   def update
-    @micropost =Micropost.find(params[:id])
+    @micropost = Micropost.find(params[:id])
     tag_list = params[:micropost][:tag_ids].split(',')
-    if @micropost.update_attributes(micropost_params)
+    if @micropost.update(micropost_params)
       @micropost.save_tags(tag_list)
       flash[:success] = '投稿を編集しました‼'
       redirect_to @micropost
     else
-    render 'edit'
+      render 'edit'
     end
   end
-  
+
   private
 
   def micropost_params

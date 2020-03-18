@@ -65,6 +65,7 @@ RSpec.describe 'Comments', type: :system do
 
     it '自分のコメント以外は削除できないこと' do
       sign_in_as other_user
+      visit "/microposts/#{comment.micropost.id}"
       expect(page).to_not have_content '削除'
     end
 
