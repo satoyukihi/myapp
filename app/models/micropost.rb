@@ -29,7 +29,8 @@ class Micropost < ApplicationRecord
   end
   
   def self.micropost_serach(search)
-    Micropost.where(['title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%"])
+    Micropost.joins(:comments).where(['microposts.title LIKE ? OR microposts.content LIKE ? OR comments.content LIKE ?',
+    "%#{search}%", "%#{search}%", "%#{search}%"])
   end
   
   private

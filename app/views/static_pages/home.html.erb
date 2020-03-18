@@ -18,12 +18,14 @@
   <div class="microposts">
     <ol class="microposts">
       <%= link_to "新規投稿!",new_micropost_path , class:"btn page-link text-dark d-inline-block fas fa-pen home12" %></p>
+      <div style="display:inline-flex">
       <%= render 'tag_search'%>
       <%= render 'title_search'%>
         <% if@microposts.any? %>
-　        <div>
+      </div>
+　        <!--<div>
 　          <%= paginate @microposts %><%= page_entries_info @microposts%>
-　        </div>
+　        </div>-->
             <%= render @microposts%>
             <%= paginate @microposts %>
          </ol>
