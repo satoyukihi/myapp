@@ -4,10 +4,6 @@ RSpec.describe Tag, type: :model do
   let(:tag) { FactoryBot.create(:tag) }
 
   context 'カラムのバリテーション' do
-    before do
-      tag
-    end
-
     it 'nameがあれば有効であること' do
       tag.valid?
       expect(tag).to be_valid

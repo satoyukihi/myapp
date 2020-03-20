@@ -4,7 +4,6 @@ RSpec.describe Comment, type: :model do
   let(:comment) { FactoryBot.create(:comment) }
   context 'カラムのバリテーション' do
     it 'content、user_id、topic_idがあれば有効であること' do
-      comment
       comment.valid?
       expect(comment).to be_valid
     end
@@ -14,13 +13,13 @@ RSpec.describe Comment, type: :model do
       comment.valid?
       expect(comment.errors[:content]).to include('を入力してください')
     end
-    
+
     it 'user_idがない場合無効な状態であること' do
       comment = Comment.new(user_id: nil)
       comment.valid?
       expect(comment.errors[:user_id]).to include('を入力してください')
     end
-    
+
     it 'micropost_idがない場合無効な状態であること' do
       comment = Comment.new(micropost_id: nil)
       comment.valid?
@@ -34,4 +33,3 @@ RSpec.describe Comment, type: :model do
     end
   end
 end
-

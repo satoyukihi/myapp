@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :comment do
     user
     micropost
-    content "MyText"
+    content 'comment'
   end
 end

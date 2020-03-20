@@ -33,9 +33,9 @@ RSpec.describe 'FavoriteRelationships', type: :system do
     sign_in_as user
     iine
     visit root_url
-    expect  do
-        visit user_path(other_user)
-        click_link 'ユーザー削除'
+    expect do
+      visit user_path(other_user)
+      click_link 'ユーザー削除'
     end.to change(user.likes, :count).by(-1)
   end
 end

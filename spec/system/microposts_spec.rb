@@ -42,9 +42,9 @@ RSpec.describe 'Microposts', type: :system do
     micropost
     sign_in_as user
     visit root_url
-    expect  do
-     visit user_path(user)
-     click_link 'ユーザー削除'
+    expect do
+      visit user_path(user)
+      click_link 'ユーザー削除'
     end.to change(Micropost, :count).by(-1)
   end
 end

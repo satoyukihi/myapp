@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tag_relationship do
     micropost
-    tag 
+    tag
   end
 end

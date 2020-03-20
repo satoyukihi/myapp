@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Sessions', type: :system do
-  let(:user)       { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
   before do
     visit root_path
   end
-  
-  
+
   it 'ログインできること' do
     user
     visit root_path
@@ -16,7 +15,7 @@ RSpec.describe 'Sessions', type: :system do
     click_button 'ログイン'
     expect(page).to have_content 'ログイン成功‼'
   end
-  
+
   it 'ログアウトできること' do
     sign_in_as(user)
     click_link 'ログアウト'
