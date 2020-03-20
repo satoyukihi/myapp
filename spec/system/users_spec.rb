@@ -94,22 +94,12 @@ RSpec.describe 'Users', type: :system do
   end
 end
 
-#   describe "マイクロポストの表示（検索、ページネーション）" do
+#   context "マイクロポストの表示（検索、ページネーション）" do
 #
 #     it "マイクロポストのタイトル検索、ページネーションが機能していること" do
 #       micropost8
 #       visit root_path
 #       expect(page).to have_content "件の投稿が表示されています"
 #       expect(page).to have_link "次"
-#
 #       expect(page).to_not have_content "test1"
-#       fill_in "q_title_cont", with: "test1"
-#       click_button "検索"
-#       expect(page).to have_content "test1"
-#
-#       sign_in_as(user)
-#       visit user_path(user)
-#       expect(page).to have_content "件の投稿が表示されています"
-#       expect(page).to have_link "次"
-#     end
 #   end
