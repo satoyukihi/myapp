@@ -12,7 +12,7 @@ RSpec.describe 'Users', type: :system do
       before do
         visit root_path
       end
-      
+
       it 'ユーザー登録の文字列が存在すること' do
         expect(page).to have_content 'ユーザー登録'
       end
@@ -83,7 +83,7 @@ RSpec.describe 'Users', type: :system do
         expect(page).to_not have_content 'ユーザー削除'
       end
     end
-    
+
     context 'ユーザー詳細' do
       it 'ゲストユーザーで他のユーザーの詳細ページにアクセスできる' do
         user

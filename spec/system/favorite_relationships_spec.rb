@@ -4,11 +4,9 @@ RSpec.describe 'FavoriteRelationships', type: :system do
   let(:user) { FactoryBot.create(:user, admin: true) }
   let(:other_user) { FactoryBot.create(:user) }
   let(:micropost) { FactoryBot.create(:micropost, user_id: other_user.id) }
-  let(:iine) do
-    FactoryBot.create(:favorite_relationship,
+  let(:iine) {FactoryBot.create(:favorite_relationship,
                       user_id: user.id,
-                      micropost_id: micropost.id)
-  end
+                      micropost_id: micropost.id)}
 
   it 'ユーザーがマイクロポストいいね実行、解除できる', js: true do
     micropost
