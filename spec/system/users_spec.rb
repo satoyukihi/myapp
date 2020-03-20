@@ -16,11 +16,6 @@ RSpec.describe 'Users', type: :system do
       it 'ユーザー登録の文字列が存在すること' do
         expect(page).to have_content 'ユーザー登録'
       end
-      
-      it '正しいページタイトルが表示されること' do
-        expect(page).to have_title 'Myごはん - 新規登録'
-      end
-      
     end
 
     context 'ユーザー登録処理' do
@@ -88,8 +83,9 @@ RSpec.describe 'Users', type: :system do
         expect(page).to_not have_content 'ユーザー削除'
       end
     end
+    
     context 'ユーザー詳細' do
-      it 'ゲストユーザーで他のユーザーの詳細ページに行く' do
+      it 'ゲストユーザーで他のユーザーの詳細ページにアクセスできる' do
         user
         visit user_path(user)
         expect(page).to_not have_content '#{user.name}'
