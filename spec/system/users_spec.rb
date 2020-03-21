@@ -35,11 +35,22 @@ RSpec.describe 'Users', type: :system do
         end.to change(User, :count).by(1)
       end
     end
+  end
+  
+  describe 'ユーザーページ' do
+    before do
+      sign_in_as user
+      visit user_path(user)
+    end
+      
+    context 'ページレイアウト' do
+      it 'ユーザー情報の文字列が存在すること' do
+        expect(page).to have_content 'ユーザー情報'
+      end
+    end
     
     context 'ユーザー情報編集' do
       it 'ユーザー自身がユーザー情報を編集する' do
-        sign_in_as user
-        click_link "ようこそ#{user.name}さん‼"
         click_link '編集ページへ'
         fill_in 'user[name]', with: 'yuki'
         fill_in 'user[email]', with: 'test@example.com'
@@ -50,12 +61,13 @@ RSpec.describe 'Users', type: :system do
       end
 
       it '他のユーザーページで編集が表示されないこと' do
-        user
-        sign_in_as(other_user)
-        visit user_path(user)
+        other_user
+        visit user_path(other_user)
         expect(page).to_not have_content '編集'
       end
     end
+  end
+  
     context 'ユーザー削除' do
       it '管理者としてユーザーを削除する' do
         user
@@ -84,13 +96,4 @@ RSpec.describe 'Users', type: :system do
         expect(page).to_not have_content 'ユーザー削除'
       end
     end
-
-    context 'ユーザー詳細' do
-      it 'ゲストユーザーで他のユーザーの詳細ページにアクセスできる' do
-        user
-        visit user_path(user)
-        expect(page).to_not have_content '#{user.name}'
-      end
-    end
-  end
 end

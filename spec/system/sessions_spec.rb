@@ -5,7 +5,7 @@ RSpec.describe 'Sessions', type: :system do
     before do
       visit root_path
     end
-  describe 'トップページ' do
+  describe 'ログインページ' do
     context 'ページレイアウト' do
       it '「ログイン」の文字列が存在すること' do
         expect(page).to have_content 'ログイン'
