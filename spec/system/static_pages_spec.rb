@@ -71,32 +71,31 @@ RSpec.describe 'StaticPages', type: :system do
         end
       end
 
-
       context 'タグ検索' do
         before do
           tag
           other_tag
           visit root_path
         end
-        it 'タグ検索できること' ,js: true do
-         select tag.name, from: 'tag_id'
-         expect(page).to have_content tag.name 
+        it 'タグ検索できること', js: true do
+          select tag.name, from: 'tag_id'
+          expect(page).to have_content tag.name
         end
-        
+
         it 'タグ検索できること（条件に合わないものは表示されないこと）', js: true do
           select tag.name, from: 'tag_id'
-          expect(page).to_not have_content "test1" 
+          expect(page).to_not have_content 'test1'
         end
       end
-    #context "マイクロポストのページネーション機能がどうすること" do
-#
-#     it "マイクロポストページネーションが機能していること" do
-#       micropost8
-#       visit root_path
-#       expect(page).to have_content "件の投稿が表示されています"
-#       expect(page).to have_link "次"
-#       expect(page).to_not have_content "test1"
-#   end
+      # context "マイクロポストのページネーション機能がどうすること" do
+      #
+      #     it "マイクロポストページネーションが機能していること" do
+      #       micropost8
+      #       visit root_path
+      #       expect(page).to have_content "件の投稿が表示されています"
+      #       expect(page).to have_link "次"
+      #       expect(page).to_not have_content "test1"
+      #   end
     end
   end
 end

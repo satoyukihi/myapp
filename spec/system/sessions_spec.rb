@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe 'Sessions', type: :system do
   let(:user) { FactoryBot.create(:user) }
-    before do
-      visit root_path
-    end
+  before do
+    visit root_path
+  end
   describe 'ログインページ' do
     context 'ページレイアウト' do
       it '「ログイン」の文字列が存在すること' do
         expect(page).to have_content 'ログイン'
       end
-    end  
-    
+    end
+
     context 'ログイン機能' do
       it 'ログインできること' do
         user
@@ -28,6 +28,6 @@ RSpec.describe 'Sessions', type: :system do
         click_link 'ログアウト'
         expect(page).to have_content 'ログアウトしました'
       end
-   end
+    end
   end
 end
