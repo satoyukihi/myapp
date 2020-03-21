@@ -35,6 +35,7 @@ RSpec.describe 'Users', type: :system do
         end.to change(User, :count).by(1)
       end
     end
+    
     context 'ユーザー情報編集' do
       it 'ユーザー自身がユーザー情報を編集する' do
         sign_in_as user
@@ -93,13 +94,3 @@ RSpec.describe 'Users', type: :system do
     end
   end
 end
-
-#   context "マイクロポストの表示（検索、ページネーション）" do
-#
-#     it "マイクロポストのタイトル検索、ページネーションが機能していること" do
-#       micropost8
-#       visit root_path
-#       expect(page).to have_content "件の投稿が表示されています"
-#       expect(page).to have_link "次"
-#       expect(page).to_not have_content "test1"
-#   end
