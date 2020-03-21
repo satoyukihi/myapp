@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   include CommentActions
-  before_action :logged_in_user, only: :create
+  before_action :logged_in_user, only: %i[create destroy]
   before_action :correct_user_comment, only: :destroy
 
   def create

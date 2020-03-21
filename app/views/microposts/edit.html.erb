@@ -1,4 +1,7 @@
 <% provide(:title,"投稿編集") %>
+
+<h1 class="new">投稿編集</h1>
+
 <%= form_with model: @micropost, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
     
@@ -19,7 +22,7 @@
           placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
     </div>
 
-    <%= f.submit "投稿！", class: "btn btn-primary" %>
+    <%= f.submit "編集", class: "btn btn-primary" %>
 <% end %>
     
     
