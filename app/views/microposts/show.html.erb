@@ -2,7 +2,7 @@
 <div class="micropost_show">
 <%= render @micropost %>
 </div>
-
+<div class="mb-3" style="max-width: 800px;">
 <div class=comment_snow>
   <% @comments.each do |comment| %>
   <div class="commentbox">
@@ -33,4 +33,5 @@
    
     <%= f.submit "コメントする", class: "btn btn-primary" %>
 <% end %>
+</div>
 </div>
