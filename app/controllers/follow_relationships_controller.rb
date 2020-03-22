@@ -1,15 +1,12 @@
 class FollowRelationshipsController < ApplicationController
-  
+ 
   def create
-    @other_user =User.find(params[:following_id])
-    current_user.follow(@other_user)
+    @user =User.find(params[:follow_relationship][:following_id])
+    current_user.follow(@user)
   end
   
-  def destory
-    @other_user = User.find(params[:id])
-    current_user.unfollow(@other_user)
+  def destroy
+    @user = User.find(params[:follow_relationship][:following_id])
+    current_user.unfollow(@user)
   end
-  
-  
 end
-　　　　

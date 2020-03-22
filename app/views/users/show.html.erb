@@ -2,26 +2,39 @@
 
 
 <div class="show container">
-<div class="show4">
- <p class="show1 text-white bg-dark">ユーザー情報</p>
+  <div class="show4">
+    <p class="show1 text-white bg-dark">ユーザー情報</p>
 
- <p class="show2">ユーザ名</p>
- <p class="show3"><%= @user.name %></p>
- 
-  <p>
-　<%= link_to "いいね一覧(#{@user.likes.count})", likes_user_path(@user), class: "nav-link" %>
-  </p>
+    <p class="show2">ユーザ名</p>
+    <p class="show3"><%= @user.name %></p>
+    
+    <% if logged_in? && @user != current_user%>
+      <div id="follow_form">
+        <% if current_user.following?(@user) %>
+          <%= render "unfollow" %>
+        <% else %>
+          <%= render "follow" %>
+        <% end %>
+      </div>
+    <% end %>
+    
+    <div class="user_show">
+　  <%= link_to "いいね一覧(#{@user.likes.count})", likes_user_path(@user), class: "nav-link" %>
   
- <% if current_user?(@user) %>
- <p><%= link_to("編集ページへ","/users/#{@user.id}/edit") %></p>
- <% end %>
+　  <%= link_to "フォロー(#{@user.followings.count})", followings_user_path(@user), class: "nav-link" %>
+  
+　  <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %>
+  
+    <% if current_user?(@user) %>
+    <%= link_to("編集ページへ","/users/#{@user.id}/edit") %>
+    <% end %>
  
- <% if admin_user? || current_user?(@user)%>
+    <% if admin_user? || current_user?(@user)%>
  
- <p><%= link_to "ユーザー削除", @user, method: :delete,
+      <p><%= link_to "ユーザー削除", @user, method: :delete,
                                 data: { confirm: "ユーザーを削除しますか?" } %></p>
- <% end %>
- 
+    <% end %>
+   </div>
  </div>
  <p class="show-top"><%= link_to("トップに戻る",root_url)%></p>
  </div>
