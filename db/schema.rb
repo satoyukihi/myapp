@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200314133201) do
+ActiveRecord::Schema.define(version: 20200322055650) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20200314133201) do
     t.index ["micropost_id"], name: "index_favorite_relationships_on_micropost_id"
     t.index ["user_id", "micropost_id"], name: "index_favorite_relationships_on_user_id_and_micropost_id", unique: true
     t.index ["user_id"], name: "index_favorite_relationships_on_user_id"
+  end
+
+  create_table "follow_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "follower_id"
+    t.bigint "following_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id", "following_id"], name: "index_follow_relationships_on_follower_id_and_following_id", unique: true
+    t.index ["follower_id"], name: "index_follow_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_follow_relationships_on_following_id"
   end
 
   create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -71,6 +81,8 @@ ActiveRecord::Schema.define(version: 20200314133201) do
 
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
+  add_foreign_key "follow_relationships", "users", column: "follower_id"
+  add_foreign_key "follow_relationships", "users", column: "following_id"
   add_foreign_key "microposts", "users"
   add_foreign_key "tag_relationships", "microposts"
   add_foreign_key "tag_relationships", "tags"
