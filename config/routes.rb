@@ -11,13 +11,14 @@ Rails.application.routes.draw do
     resources :users do
       member do
         get :likes
+        get :followings, :followers
       end
     end
-  
     resources :microposts,          only: [:new, :show, :edit, :update, :create, :destroy] do
       resources :comments,          only: [:create, :destroy]
     end
     resources :favorite_relationships, only: [:create, :destroy]
+    resources :follow_relationships, only: [:create, :destroy]
     
 
  
