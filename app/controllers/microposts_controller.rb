@@ -14,12 +14,18 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
-    tag_list = params[:micropost][:tag_ids].split(',')
+    @tag_ids = params[:micropost][:tag_ids].split(',')
     if @micropost.save
-      @micropost.save_tags(tag_list)
-      flash[:success] = '投稿しました!'
-      redirect_to root_url
+      if @micropost.save_tags(@tag_ids)
+        flash[:success] = '投稿しました!'
+        redirect_to root_url
+      else
+        @tag_ids = params[:micropost][:tag_ids]
+        flash.now[:danger] = '空白のタグが含まれています'
+        render 'new'
+      end
     else
+      @tag_ids = params[:micropost][:tag_ids]
       render 'new'
     end
   end
@@ -32,21 +38,23 @@ class MicropostsController < ApplicationController
 
   def edit
     @micropost = Micropost.find(params[:id])
-    @tag_list = @micropost.tags.pluck(:name).join(',')
+    @tag_ids = @micropost.tags.pluck(:name).join(',')
   end
-
+  
   def update
     @micropost = Micropost.find(params[:id])
-    tag_list = params[:micropost][:tag_ids].split(',')
+    @tag_ids = params[:micropost][:tag_ids].split(',')
     if @micropost.update(micropost_params)
-      if @micropost.save_tags(tag_list)
+      if @micropost.save_tags(@tag_ids)
         flash[:success] = '投稿を編集しました‼'
         redirect_to @micropost
       else
+        @tag_ids = params[:micropost][:tag_ids]
         flash.now[:danger] = '空白のタグが含まれています'
         render 'edit'
       end
     else
+      @tag_ids = params[:micropost][:tag_ids]
       render 'edit'
     end
   end
