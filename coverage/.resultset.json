@@ -1,12 +1,11 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/ec2-user/environment/myapp/app/models/follow_relationship.rb": {
+      "/home/ec2-user/environment/myapp/app/models/tag_relationship.rb": {
         "lines": [
           1,
           1,
           1,
-          null,
           1,
           1,
           1,
@@ -17,6 +16,111 @@
         "lines": [
           1,
           1,
+          null
+        ]
+      },
+      "/home/ec2-user/environment/myapp/app/models/micropost.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          11,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          8,
+          null,
+          null
+        ]
+      },
+      "/home/ec2-user/environment/myapp/app/uploaders/picture_uploader.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          8,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          16,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -35,7 +139,7 @@
           null,
           null,
           null,
-          11,
+          9,
           null,
           null,
           1,
@@ -91,66 +195,15 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/uploaders/picture_uploader.rb": {
+      "/home/ec2-user/environment/myapp/app/models/tag.rb": {
         "lines": [
-          0,
+          1,
+          1,
+          1,
           null,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0
-        ],
-        "branches": {
-        }
+          1,
+          null
+        ]
       },
       "/home/ec2-user/environment/myapp/app/helpers/sessions_helper.rb": {
         "lines": [
@@ -641,16 +694,6 @@
         "branches": {
         }
       },
-      "/home/ec2-user/environment/myapp/app/models/tag_relationship.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/home/ec2-user/environment/myapp/app/models/favorite_relationship.rb": {
         "lines": [
           0,
@@ -664,60 +707,14 @@
         "branches": {
         }
       },
-      "/home/ec2-user/environment/myapp/app/models/micropost.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/models/tag.rb": {
+      "/home/ec2-user/environment/myapp/app/models/follow_relationship.rb": {
         "lines": [
           0,
           0,
           0,
           null,
+          0,
+          0,
           0,
           0
         ],
@@ -753,6 +750,6 @@
         }
       }
     },
-    "timestamp": 1585032804
+    "timestamp": 1585034187
   }
 }
