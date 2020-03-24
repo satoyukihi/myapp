@@ -39,9 +39,13 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     tag_list = params[:micropost][:tag_ids].split(',')
     if @micropost.update(micropost_params)
-      @micropost.save_tags(tag_list)
-      flash[:success] = '投稿を編集しました‼'
-      redirect_to @micropost
+      if @micropost.save_tags(tag_list)
+        flash[:success] = '投稿を編集しました‼'
+        redirect_to @micropost
+      else
+        flash.now[:danger] = '空白のタグが含まれています'
+        render 'edit'
+      end
     else
       render 'edit'
     end
