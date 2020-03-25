@@ -8,7 +8,4 @@ module ApplicationHelper
     end
   end
   
-  def self.join
-    self.join(',')
-  end
 end

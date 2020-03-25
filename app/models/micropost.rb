@@ -13,8 +13,7 @@ class Micropost < ApplicationRecord
   validates :picture, presence: true
   validate  :picture_size
   
-  validates_associated :tags
-
+  
   def save_tags(savemicropost_tags)
     current_tags = tags.pluck(:name) unless tags.nil?
     old_tags = current_tags - savemicropost_tags
