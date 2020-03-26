@@ -21,7 +21,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.page(params[:page]).per(5)
+    @microposts = @user.microposts.includes(:tags, :user, :liked_by)
+    @microposts = @microposts.page(params[:page]).per(5)
+    
   end
 
   def edit
@@ -48,19 +50,19 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    @microposts = @user.likes.page(params[:page]).per(5)
+    @microposts = @user.likes.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
     render 'show_like'
   end
   
   def followings
     @user =User.find(params[:id])
-    @users =@user.followings.page(params[:page]).per(5)
+    @users =@user.followings.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
     render 'show_followings'
   end
   
   def followers
     @user =User.find(params[:id])
-    @users =@user.followers.page(params[:page]).per(5)
+    @users =@user.followers.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
     render 'show_followers'
   end
     
