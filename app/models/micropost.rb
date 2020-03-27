@@ -34,8 +34,8 @@ class Micropost < ApplicationRecord
   end
 
   def self.micropost_serach(search)
-    Micropost.includes(:comments).where(['microposts.title LIKE ? OR microposts.content LIKE ? OR comments.content LIKE ?',
-                                         "%#{search}%", "%#{search}%", "%#{search}%"]).references(:comments)
+    Micropost.eager_load(:comments).where(['microposts.title LIKE ? OR microposts.content LIKE ? OR comments.content LIKE ?',
+                                         "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
   private
