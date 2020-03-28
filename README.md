@@ -1,9 +1,6 @@
 ## アプリケーションの概要
 作った料理を共有できる、料理投稿SNSサービス https://www.my-gohan.com/
 
-##ER図
-<img width="635" alt="スクリーンショット 2020-03-28 15 40 13" src="https://user-images.githubusercontent.com/59824319/77817064-5bfb5b80-710b-11ea-9427-342ddce7e96d.png">
-
 ## 技術的ポイント
 ・AWS VPC EC2 ELBを用いたRails本番環境構築  
 ・AWS ACMでSSL証明書を発行し、SSL化  
@@ -27,6 +24,8 @@
 ・ログイン  
 ・モデルに対するバリデーション  
 
+## ER図
+<img width="635" alt="スクリーンショット 2020-03-28 15 40 13" src="https://user-images.githubusercontent.com/59824319/77817064-5bfb5b80-710b-11ea-9427-342ddce7e96d.png">
 ## 環境
 ■フレームワーク  
 　Ruby on Rails  
