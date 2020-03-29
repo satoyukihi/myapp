@@ -26,6 +26,7 @@
 
 ## ER図
 <img width="635" alt="スクリーンショット 2020-03-28 15 40 13" src="https://user-images.githubusercontent.com/59824319/77817064-5bfb5b80-710b-11ea-9427-342ddce7e96d.png">
+
 ## 環境
 ■フレームワーク  
 　Ruby on Rails  
