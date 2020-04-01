@@ -14,7 +14,7 @@ class Micropost < ApplicationRecord
   validates :picture, presence: true
   validate  :picture_size
   
-  
+  #タグを作成・更新する
   def save_tags(savemicropost_tags)
     current_tags = tags.pluck(:name) unless tags.nil?
     old_tags = current_tags - savemicropost_tags
@@ -33,10 +33,29 @@ class Micropost < ApplicationRecord
       tags.delete Tag.find_by(name: old_name)
     end
   end
-
+  
+  #タイトル・本文・コメントから検索
   def self.micropost_serach(search)
     Micropost.eager_load(:comments).where(['microposts.title LIKE ? OR microposts.content LIKE ? OR comments.content LIKE ?',
                                          "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
+  
+  #通知機能
+  def create_notification_like!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and micropost_id = ? and action = ? ",
+                                  current_user.id, user_id, id, 'like'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        micropost_id: id,
+        visited_id: user_id,
+        action: 'like'
+      )
+      
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
   end
 
   private

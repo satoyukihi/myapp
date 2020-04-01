@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20200331141221) do
     t.bigint "micropost_id"
     t.bigint "comment_id"
     t.string "action", null: false
-    t.boolean "checked", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_notifications_on_comment_id"

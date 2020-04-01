@@ -6,7 +6,7 @@ class CreateNotifications < ActiveRecord::Migration[5.1]
       t.references :micropost, foreign_key: true
       t.references :comment, foreign_key: true
       t.string :action, null: false
-      t.boolean :checked, null: false
+      t.boolean :checked, null: false, default: false
 
       t.timestamps
     end
