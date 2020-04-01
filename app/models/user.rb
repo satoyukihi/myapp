@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :followings, through: :following_relationships
   has_many :follower_relationships,foreign_key: "following_id",class_name: "FollowRelationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
-  
-
+  has_many :notifications, foreign_key:"vistor_id", class_name: "Notification", dependent: :destroy
+  has_many :notifications, foreign_key:"visited_id", class_name: "Notification", dependent: :destroy
   # ユーザーセーブ前にemailをすべて小文字にする
   before_save { self.email = email.downcase }
 

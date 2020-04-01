@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 20200331141221) do
   add_foreign_key "follow_relationships", "users", column: "follower_id"
   add_foreign_key "follow_relationships", "users", column: "following_id"
   add_foreign_key "microposts", "users"
+  add_foreign_key "notifications", "comments"
+  add_foreign_key "notifications", "microposts"
   add_foreign_key "notifications", "users", column: "visited_id"
   add_foreign_key "notifications", "users", column: "visitor_id"
   add_foreign_key "tag_relationships", "microposts"

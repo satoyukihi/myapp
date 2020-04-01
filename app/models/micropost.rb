@@ -5,6 +5,7 @@ class Micropost < ApplicationRecord
   has_many :tags, through: :tag_relationships
   has_many :favorite_relationships, dependent: :destroy
   has_many :liked_by, through: :favorite_relationships, source: :user
+  has_many :notifications, dependent: :destroy
   default_scope -> { order(created_at: :desc) } # 作成順から並ぶように
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
