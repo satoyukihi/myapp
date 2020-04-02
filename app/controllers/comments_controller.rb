@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     @comment.micropost_id = params[:micropost_id]
     if @comment.save
       flash[:success] = 'コメントしました'
+      @micropost=@comment.micropost
+      @micropost.create_notification_comment!(current_user, @comment.id)
       redirect_to @comment.micropost
     else
       comments_get
