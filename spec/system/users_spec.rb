@@ -33,7 +33,7 @@ RSpec.describe 'Users', type: :system do
 
           expect(page).to have_content 'ユーザー登録完了！Myごはんへようこそ！！'
         end.to change(User, :count).by(1)
-      end  
+      end
       it '無効な値でユーザー登録ができないこと' do
         expect do
           click_link '新規ユーザー登録'
@@ -77,8 +77,8 @@ RSpec.describe 'Users', type: :system do
         visit user_path(other_user)
         expect(page).to_not have_content '編集'
       end
-      
-      it '他のユーザーページで編集が表示されないこと(ゲストユーザー)'  do
+
+      it '他のユーザーページで編集が表示されないこと(ゲストユーザー)' do
         click_link 'ログアウト'
         visit user_path(user)
         expect(page).to_not have_content '編集'

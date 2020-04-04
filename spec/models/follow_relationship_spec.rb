@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe FollowRelationship, type: :model do
-  let(:follow_relationship) {FactoryBot.create(:follow_relationship)}
+  let(:follow_relationship) { FactoryBot.create(:follow_relationship) }
   before do
     follow_relationship
   end
@@ -25,8 +25,8 @@ RSpec.describe FollowRelationship, type: :model do
 
   it 'follower_idとfollowing＿idがユニークでない場合無効な状態であること' do
     follow = FactoryBot.build(:follow_relationship,
-                             follower_id: follow_relationship.follower_id,
-                             following_id: follow_relationship.following_id)
+                              follower_id: follow_relationship.follower_id,
+                              following_id: follow_relationship.following_id)
     follow.valid?
     expect(follow.errors[:follower_id]).to include('はすでに存在します')
   end

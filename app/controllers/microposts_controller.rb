@@ -40,7 +40,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     @tag_ids = @micropost.tags.pluck(:name).join(',')
   end
-  
+
   def update
     @micropost = Micropost.find(params[:id])
     @tag_ids = params[:micropost][:tag_ids].split(',')

@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[index edit update destroy likes]
   before_action :correct_user,   only: %i[edit update]
   before_action :correct_user_or_admin_user, only: :destroy
-
   def new
     # 新規ユーザ登録ページ
     @user = User.new # フォームからcreateにデーターを渡す
@@ -23,7 +22,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.includes(:tags, :user, :liked_by)
     @microposts = @microposts.page(params[:page]).per(5)
-    
   end
 
   def edit
@@ -53,19 +51,19 @@ class UsersController < ApplicationController
     @microposts = @user.likes.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
     render 'show_like'
   end
-  
+
   def followings
-    @user =User.find(params[:id])
-    @users =@user.followings.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
+    @user = User.find(params[:id])
+    @users = @user.followings.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
     render 'show_followings'
   end
-  
+
   def followers
-    @user =User.find(params[:id])
-    @users =@user.followers.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
+    @user = User.find(params[:id])
+    @users = @user.followers.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
     render 'show_followers'
   end
-    
+
   # クラス内で参照
   private
 

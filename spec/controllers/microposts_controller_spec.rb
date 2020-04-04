@@ -47,8 +47,8 @@ RSpec.describe MicropostsController, type: :controller do
 
   describe 'edit' do
     before do
-      @user      = FactoryBot.create(:user)
-        @micropost = FactoryBot.create(:micropost, user_id: @user.id)
+      @user = FactoryBot.create(:user)
+      @micropost = FactoryBot.create(:micropost, user_id: @user.id)
     end
 
     it '正常にレスポンスを返すこと' do
@@ -63,8 +63,8 @@ RSpec.describe MicropostsController, type: :controller do
     end
 
     it 'ログイン画面にリダイレクトすること(ゲストユーザー)' do
-        post :edit, params: { id: @micropost.id }
-        expect(response).to redirect_to '/login'
+      post :edit, params: { id: @micropost.id }
+      expect(response).to redirect_to '/login'
     end
 
     it '認可されていないユーザーとしてレスポンスを返すこと(他のユーザー)' do
@@ -73,32 +73,31 @@ RSpec.describe MicropostsController, type: :controller do
     end
 
     it 'ホーム画面にリダイレクトすること(他のユーザー)' do
-        log_in_as(user)
-        delete :edit, params: { id: @micropost.id }
-        expect(response).to redirect_to '/'
+      log_in_as(user)
+      delete :edit, params: { id: @micropost.id }
+      expect(response).to redirect_to '/'
     end
   end
 
   describe 'update' do
-
     before do
-      @user      = FactoryBot.create(:user)
-        @micropost = FactoryBot.create(:micropost, user_id: @user.id)
+      @user = FactoryBot.create(:user)
+      @micropost = FactoryBot.create(:micropost, user_id: @user.id)
     end
 
     it '正常にレスポンスを返すこと' do
-       log_in_as(@user)
-       get :update, params: { id: @micropost.id }
-       expect(response).to be_success
-    end 
+      log_in_as(@user)
+      get :update, params: { id: @micropost.id }
+      expect(response).to be_success
+    end
     it '認可されていないユーザーとしてレスポンスを返すこと(ゲストユーザー)' do
       get :update, params: { id: @micropost.id }
       expect(response).to have_http_status '302'
     end
 
     it 'ログイン画面にリダイレクトすること(ゲストユーザー)' do
-        post :update, params: { id: @micropost.id }
-        expect(response).to redirect_to '/login'
+      post :update, params: { id: @micropost.id }
+      expect(response).to redirect_to '/login'
     end
 
     it '認可されていないユーザーとしてレスポンスを返すこと(他のユーザー)' do
@@ -107,33 +106,32 @@ RSpec.describe MicropostsController, type: :controller do
     end
 
     it 'ホーム画面にリダイレクトすること(他のユーザー)' do
-         log_in_as(other_user)
-         delete :update, params: { id: @micropost.id }
-         expect(response).to redirect_to '/'
+      log_in_as(other_user)
+      delete :update, params: { id: @micropost.id }
+      expect(response).to redirect_to '/'
     end
   end
 
   describe 'create' do
-   context '認可されているユーザーとして' do
-       it 'マイクロポストを作成できること' do
-         log_in_as(user)
-         expect do
-           post :create, params: { micropost: micropost_params }
-         end .to change(user.microposts, :count).by(1)
-       end
-     
-    context '認可されていないユーザーとして(ゲストユーザー)' do
-      it '302レスポンスを返すこと' do
-        post :create, params: { micropost: micropost_params }
-        expect(response).to have_http_status '302'
+    context '認可されているユーザーとして' do
+      it 'マイクロポストを作成できること' do
+        log_in_as(user)
+        expect do
+          post :create, params: { micropost: micropost_params }
+        end .to change(user.microposts, :count).by(1)
       end
 
-      it 'ログイン画面にリダイレクトすること(ゲストユーザー)' do
-        post :create, params: { micropost: micropost_params }
-        expect(response).to redirect_to '/login'
-      end
-  end
+      context '認可されていないユーザーとして(ゲストユーザー)' do
+        it '302レスポンスを返すこと' do
+          post :create, params: { micropost: micropost_params }
+          expect(response).to have_http_status '302'
+        end
 
+        it 'ログイン画面にリダイレクトすること(ゲストユーザー)' do
+          post :create, params: { micropost: micropost_params }
+          expect(response).to redirect_to '/login'
+        end
+      end
     end
   end
 
