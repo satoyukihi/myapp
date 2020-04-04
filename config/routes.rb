@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
     resources :favorite_relationships, only: [:create, :destroy]
     resources :follow_relationships, only: [:create, :destroy]
-    resources :notifications, only: :index
+    resources :notifications, only: [:index, :destroy]
     
 
  

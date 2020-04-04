@@ -3,8 +3,8 @@ module NotificationsHelper
   def notification_form(notification)
       @visitor = notification.visitor
       @comment = nil
-      #your_micropost = link_to 'あなたの投稿', user_microposts_path(notification), style:"font-weight: bold;"
-      @visiter_comment = notification.comment_id
+      
+      @visitor_comment = notification.comment_id
       #notification.actionがfollowかlikeかcommentか
       case notification.action
         when "follow" then
