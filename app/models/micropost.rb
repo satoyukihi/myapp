@@ -63,7 +63,6 @@ class Micropost < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-  　#初めてのコメントがついた時に通知が行かないのでは？
     save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
   end
 

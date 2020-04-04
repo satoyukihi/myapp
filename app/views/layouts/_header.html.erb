@@ -20,7 +20,7 @@
       
        <% if logged_in? %>
       <li class="nav-item">
-        
+        <%= link_to "通知", notifications_path, class: "nav-link fas fa-paste" %>
         <%= link_to "投稿一覧", root_path, class: "nav-link fas fa-paste" %>
         
         <%= link_to "新規投稿", new_micropost_path, class: "nav-link fas fa-pen" %>
