@@ -18,6 +18,7 @@
 ・タグ検索機能  
 ・投稿へのコメント機能  
 ・いいね（お気に入り）登録    
+・通知機能  
 ・記事検索(コメントまでの横断検索)  
 ・ページネーション機能（kaminariを使用）    
 ・新規ユーザー登録  
@@ -25,7 +26,7 @@
 ・モデルに対するバリデーション  
 
 ## ER図
-<img width="635" alt="スクリーンショット 2020-03-28 15 40 13" src="https://user-images.githubusercontent.com/59824319/77817064-5bfb5b80-710b-11ea-9427-342ddce7e96d.png">
+<img width="732" alt="スクリーンショット 2020-04-04 16 22 02" src="https://user-images.githubusercontent.com/59824319/78450727-aeb0b680-76bb-11ea-9277-e26c7b04c71b.png">
 
 ## 環境
 ■フレームワーク  
