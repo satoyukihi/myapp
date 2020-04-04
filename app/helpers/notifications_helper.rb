@@ -13,6 +13,7 @@ module NotificationsHelper
     when 'like'
       tag.a(notification.visitor.name, href: user_path(@visitor)) + 'が' + tag.a('あなたの投稿', href: micropost_path(notification.micropost_id)) + 'にいいねしました'
     when 'comment' then
+      #コメントの内容と投稿のタイトルを取得
       @comment = Comment.find_by(id: @visitor_comment)
       @comment_content =@comment.content
       @micropost_title =@comment.micropost.title
