@@ -27,7 +27,8 @@ RSpec.describe 'FavoriteRelationships', type: :system do
 #          find('.edit_favorite_relationships').click
 #          sleep 0.5
 #        end.to change(user.likes, :count).by(-1)
-# =end    it 'ユーザーが削除されると関連するいいねも削除されること' do
+# =end   
+  it 'ユーザーが削除されると関連するいいねも削除されること' do
     sign_in_as user
     iine
     visit root_url
