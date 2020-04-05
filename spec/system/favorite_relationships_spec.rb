@@ -10,24 +10,24 @@ RSpec.describe 'FavoriteRelationships', type: :system do
                       micropost_id: micropost.id)
   end
 
-#   it 'ユーザーがマイクロポストいいね実行、解除できる' do, js: true do
-#        micropost
-#        visit login_path
-#        fill_in 'session[email]',    with: user.email
-#        fill_in 'session[password]', with: user.password
-#        click_button 'ログイン'
-#        visit root_path
-#        
-#        expect do
-#          find('.new_favorite_relationship').click
-#          sleep 0.5
-#        end.to change(user.likes, :count).by(1)
-#   
-#        expect do
-#          find('.edit_favorite_relationships').click
-#          sleep 0.5
-#        end.to change(user.likes, :count).by(-1)
-# =end   
+  #   it 'ユーザーがマイクロポストいいね実行、解除できる' do, js: true do
+  #        micropost
+  #        visit login_path
+  #        fill_in 'session[email]',    with: user.email
+  #        fill_in 'session[password]', with: user.password
+  #        click_button 'ログイン'
+  #        visit root_path
+  #
+  #        expect do
+  #          find('.new_favorite_relationship').click
+  #          sleep 0.5
+  #        end.to change(user.likes, :count).by(1)
+  #
+  #        expect do
+  #          find('.edit_favorite_relationships').click
+  #          sleep 0.5
+  #        end.to change(user.likes, :count).by(-1)
+  # =end
   it 'ユーザーが削除されると関連するいいねも削除されること' do
     sign_in_as user
     iine

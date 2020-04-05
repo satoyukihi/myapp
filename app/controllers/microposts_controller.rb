@@ -33,7 +33,7 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     flash[:success] = '投稿を削除しました'
-    redirect_to request.referer || current_user
+    redirect_to current_user || request.referer
   end
 
   def edit

@@ -5,17 +5,17 @@ FactoryBot.define do
     micropost
     comment
     checked false
-    
+
     trait :like do
-      action "like"
+      action 'like'
     end
-    
+
     trait :follow do
-      action "follow"
+      action 'follow'
     end
-    
+
     trait :comment do
-      action "comment"
+      action 'comment'
     end
   end
 end
