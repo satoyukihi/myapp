@@ -9,13 +9,7 @@
     <p class="show3"><%= @user.name %></p>
     
     <% if logged_in? && @user != current_user%>
-      <div id="follow_form">
-        <% if current_user.following?(@user) %>
-          <%= render "unfollow" %>
-        <% else %>
-          <%= render "follow" %>
-        <% end %>
-      </div>
+    <%= render "follow_form" %>
     <% end %>
     
     <div class="user_show">
