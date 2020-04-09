@@ -12,9 +12,8 @@
       <%= render "follow_form" %>
     <% end %>
     
-    <ul class="user_show">
+    <div class="user_show">
 　    <p><%= link_to "いいね一覧(#{@user.likes.count})", likes_user_path(@user)%></p>
-  
 　    <p><%= link_to "フォロー(#{@user.followings.count})", followings_user_path(@user)%>
 / <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user)%></p>
   
