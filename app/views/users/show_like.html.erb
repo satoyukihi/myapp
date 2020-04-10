@@ -1,8 +1,6 @@
 <% content_for(:html_title) { 'Myごはん-いいね一覧' } %>
 <div class="microposts">
     <% if @user.microposts.any? %>
-      
-      
        <ol class="micro">
          <%= link_to "新規投稿",new_micropost_path , class:"btn page-link text-dark d-inline-block" %></p>
           <%= page_entries_info @microposts%>

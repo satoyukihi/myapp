@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
   include CommentActions
   before_action :logged_in_user, only: %i[new create edit update destroy]
-  before_action :correct_user_micropost, only: %i[edit uppdate destroy]
+  before_action :correct_user_micropost, only: %i[edit update destroy]
 
   def new
     @micropost = Micropost.new

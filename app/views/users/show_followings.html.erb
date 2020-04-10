@@ -1,1 +1,15 @@
-<%=paginate @users %>
+<% provide(:title,"フォロー一覧") %>
+
+<h3 class="follow_title">フォロワー</h3>
+<p><%= "#{@user.followings.count}"%>人をフォローしています</p>
+
+<div class="follo_view">
+  <% if @user.followings.any? %>
+    <% @users.each do |user| %>
+      <p><%= link_to "#{user.name}", user_path(user)%>さんをフォローしています。</p>
+    <% end %>
+　<% else %>
+      <P>フォローしているユーザーはいません</P>
+    <%=paginate @users %>
+  <% end %>
+</div>
