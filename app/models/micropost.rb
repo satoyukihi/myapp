@@ -22,11 +22,9 @@ class Micropost < ApplicationRecord
 
     new_tags.each do |new_name|
       micropost_tag = Tag.find_or_create_by(name: new_name)
-      if micropost_tag.valid?
-        tags << micropost_tag
-      else
-        return false
-      end
+      return false unless micropost_tag.valid?
+
+      tags << micropost_tag
     end
 
     old_tags.each do |old_name|
@@ -44,16 +42,16 @@ class Micropost < ApplicationRecord
   def create_notification_like!(current_user)
     temp = Notification.where(['visitor_id = ? and visited_id = ? and micropost_id = ? and action = ? ',
                                current_user.id, user_id, id, 'like'])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        micropost_id: id,
-        visited_id: user_id,
-        action: 'like'
-      )
+    return if temp.present?
 
-      notification.checked = true if notification.visitor_id == notification.visited_id
-      notification.save if notification.valid?
-    end
+    notification = current_user.active_notifications.new(
+      micropost_id: id,
+      visited_id: user_id,
+      action: 'like'
+    )
+
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
   end
 
   def create_notification_comment!(current_user, comment_id)
