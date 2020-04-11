@@ -1,0 +1,21 @@
+<% provide(:title,"top_page") %>
+
+  <div class="microposts">
+    <ol class="microposts">
+      <%= link_to "新規投稿!",new_micropost_path , class:"btn page-link text-dark d-inline-block fas fa-pen home12" %></p>
+      <div style="display:inline-flex">
+        <p><%= link_to "全ての投稿を表示", root_path(current_user), class:"btn"%></p>
+        <% if@microposts.any? %>
+      </div>
+　        <!--<div>
+　          <%= paginate @microposts %><%= page_entries_info @microposts%>
+　        </div>-->
+            <%= render @microposts%>
+            <%= paginate @microposts %>
+         </ol>
+       <% else %>
+         <P>投稿がありません</P>
+       <% end %>
+  </div>
+  
+  

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[index edit update destroy likes]
-  before_action :correct_user,   only: %i[edit update]
+  before_action :correct_user,   only: %i[edit update feed]
   before_action :correct_user_or_admin_user, only: :destroy
   def new
     # 新規ユーザ登録ページ
@@ -49,19 +49,20 @@ class UsersController < ApplicationController
   def likes
     @user = User.find(params[:id])
     @microposts = @user.likes.includes(:tags, :user, :liked_by).page(params[:page]).per(5)
-    render 'show_like'
   end
 
   def followings
     @user = User.find(params[:id])
     @users = @user.followings.page(params[:page]).per(5)
-    render 'show_followings'
   end
 
   def followers
     @user = User.find(params[:id])
     @users = @user.followers.page(params[:page]).per(5)
-    render 'show_followers'
+  end
+  
+  def feed
+    @microposts = current_user.feed.page(params[:page]).per(10)
   end
 
   # クラス内で参照
@@ -82,7 +83,8 @@ class UsersController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
-
+  
+  #ログイン中のユーザーが正しいユーザーか確認
   def correct_user?
     @user = User.find(params[:id])
     current_user?(@user)

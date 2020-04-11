@@ -1,5 +1,5 @@
 <% provide(:title,"top_page") %>
-<main role="main" class="container">
+
   
   
   <% if !logged_in? %>
@@ -13,7 +13,7 @@
       <% end %>
   </div>
   <% end %>
-</main>
+
 
   <div class="microposts">
     <ol class="microposts">
@@ -21,6 +21,9 @@
       <div style="display:inline-flex">
       <%= render 'tag_search'%>
       <%= render 'title_search'%>
+      <% if logged_in? %>
+        <p><%= link_to "フォローしているユーザーの投稿のみ表示", feed_user_path(current_user), class:"btn" %></p>
+      <% end %>
         <% if@microposts.any? %>
       </div>
 　        <!--<div>
