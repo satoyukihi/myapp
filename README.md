@@ -2,6 +2,7 @@
 作った料理を共有できる、料理投稿SNSサービス https://www.my-gohan.com/
 
 ## 技術的ポイント
+・dockerを用いた開発環境構築(rails+Mysql+テスト用db+selenium_chrome(systemtest用))  
 ・AWS VPC EC2 ELBを用いたRails本番環境構築  
 ・AWS ACMでSSL証明書を発行し、SSL化  
 ・AWS S3へ投稿された画像を保存  
