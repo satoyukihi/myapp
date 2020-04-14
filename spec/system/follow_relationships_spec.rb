@@ -8,24 +8,25 @@ RSpec.describe 'FollowRelationships', type: :system do
                       following_id: other_user.id, follower_id: user.id)
   end
 
-  #   it 'ユーザーが他のユーザーをフォロー実行、解除できる', js: true do
-  #        user
-  #        other_user
-  #        visit login_path
-  #        fill_in 'session[email]',    with: user.email
-  #        fill_in 'session[password]', with: user.password
-  #        click_button 'ログイン'
-  #
-  #        expect do
-  #          find('/follow_relationships').click
-  #          sleep 0.5
-  #        end.to change(user.followings, :count).by(1)
-  #
-  #        expect do
-  #          find('/follow_relationships/').click
-  #          sleep 0.5
-  #        end.to change(user.followings, :count).by(-1)
-  #    end
+     it 'ユーザーが他のユーザーをフォロー実行、解除できる', js: true do
+          user
+          other_user
+          visit login_path
+          fill_in 'session[email]',    with: user.email
+          fill_in 'session[password]', with: user.password
+          click_button 'ログイン'
+          visit user_path(other_user)
+  
+          expect do
+            find('.btn').click
+            sleep 0.5
+          end.to change(user.followings, :count).by(1)
+  
+          expect do
+            find('.btn').click
+            sleep 0.5
+          end.to change(user.followings, :count).by(-1)
+      end
 
   it 'ユーザーが削除されると関連するフォローも削除されること' do
     sign_in_as user

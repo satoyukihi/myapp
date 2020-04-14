@@ -7,6 +7,7 @@ RSpec.describe Micropost, type: :model do
 
   it '投稿順にならんでいること' do
     micropost = FactoryBot.create(:micropost)
+    sleep 1.0
     after_micropost = FactoryBot.create(:micropost)
     expect(after_micropost).to eq Micropost.first
   end

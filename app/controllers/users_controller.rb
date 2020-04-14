@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.page(params[:page]).per(5)
   end
-  
+
   def feed
     @microposts = current_user.feed.page(params[:page]).per(10)
   end
@@ -83,8 +83,8 @@ class UsersController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
-  
-  #ログイン中のユーザーが正しいユーザーか確認
+
+  # ログイン中のユーザーが正しいユーザーか確認
   def correct_user?
     @user = User.find(params[:id])
     current_user?(@user)

@@ -35,7 +35,7 @@ RSpec.describe 'Notifications', type: :system do
       it 'いいねした時に通知が作成されること' do
         expect do
           visit micropost_path(micropost)
-          find('.new_favorite_relationship').click
+          find('.iine').click
         end.to change(user.likes, :count).by(1)
       end
 
