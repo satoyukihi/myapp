@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/ec2-user/environment/myapp/app/controllers/favorite_relationships_controller.rb": {
+      "/myproject/app/controllers/favorite_relationships_controller.rb": {
         "lines": [
           1,
           1,
@@ -30,7 +30,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/application_controller.rb": {
+      "/myproject/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -50,7 +50,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/follow_relationships_controller.rb": {
+      "/myproject/app/controllers/follow_relationships_controller.rb": {
         "lines": [
           1,
           1,
@@ -75,7 +75,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/microposts_controller.rb": {
+      "/myproject/app/controllers/microposts_controller.rb": {
         "lines": [
           1,
           1,
@@ -151,7 +151,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/concerns/comment_actions.rb": {
+      "/myproject/app/controllers/concerns/comment_actions.rb": {
         "lines": [
           1,
           1,
@@ -164,7 +164,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/notifications_controller.rb": {
+      "/myproject/app/controllers/notifications_controller.rb": {
         "lines": [
           1,
           1,
@@ -182,7 +182,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/static_pages_controller.rb": {
+      "/myproject/app/controllers/static_pages_controller.rb": {
         "lines": [
           1,
           1,
@@ -198,7 +198,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/users_controller.rb": {
+      "/myproject/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -251,18 +251,19 @@
           1,
           2,
           2,
-          2,
           null,
           null,
           1,
           0,
           0,
-          0,
           null,
           null,
           1,
           0,
           0,
+          null,
+          null,
+          1,
           0,
           null,
           null,
@@ -283,6 +284,7 @@
           null,
           1,
           0,
+          null,
           null,
           null,
           1,
@@ -297,7 +299,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/comment.rb": {
+      "/myproject/app/models/comment.rb": {
         "lines": [
           1,
           1,
@@ -310,14 +312,14 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/application_record.rb": {
+      "/myproject/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/favorite_relationship.rb": {
+      "/myproject/app/models/favorite_relationship.rb": {
         "lines": [
           1,
           1,
@@ -328,7 +330,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/follow_relationship.rb": {
+      "/myproject/app/models/follow_relationship.rb": {
         "lines": [
           1,
           1,
@@ -340,7 +342,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/micropost.rb": {
+      "/myproject/app/models/micropost.rb": {
         "lines": [
           1,
           1,
@@ -429,7 +431,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/uploaders/picture_uploader.rb": {
+      "/myproject/app/uploaders/picture_uploader.rb": {
         "lines": [
           1,
           null,
@@ -488,7 +490,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/notification.rb": {
+      "/myproject/app/models/notification.rb": {
         "lines": [
           1,
           306,
@@ -505,7 +507,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/tag_relationship.rb": {
+      "/myproject/app/models/tag_relationship.rb": {
         "lines": [
           1,
           1,
@@ -516,7 +518,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/tag.rb": {
+      "/myproject/app/models/tag.rb": {
         "lines": [
           1,
           1,
@@ -526,7 +528,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/models/user.rb": {
+      "/myproject/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -606,10 +608,17 @@
           null,
           1,
           null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/comments_controller.rb": {
+      "/myproject/app/controllers/comments_controller.rb": {
         "lines": [
           1,
           1,
@@ -651,7 +660,7 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/controllers/sessions_controller.rb": {
+      "/myproject/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -676,7 +685,99 @@
           null
         ]
       },
-      "/home/ec2-user/environment/myapp/app/helpers/sessions_helper.rb": {
+      "/myproject/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myproject/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myproject/app/helpers/comments_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myproject/app/helpers/follow_relationships_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myproject/app/helpers/static_pages_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myproject/app/helpers/notifications_helper.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myproject/app/helpers/users_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myproject/app/helpers/likes_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myproject/app/helpers/sessions_helper.rb": {
         "lines": [
           0,
           null,
@@ -725,41 +826,7 @@
         "branches": {
         }
       },
-      "/home/ec2-user/environment/myapp/app/helpers/notifications_helper.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/helpers/users_helper.rb": {
+      "/myproject/app/helpers/favorite_relationships_helper.rb": {
         "lines": [
           0,
           0
@@ -767,7 +834,7 @@
         "branches": {
         }
       },
-      "/home/ec2-user/environment/myapp/app/helpers/static_pages_helper.rb": {
+      "/myproject/app/helpers/microposts_helper.rb": {
         "lines": [
           0,
           0
@@ -775,7 +842,7 @@
         "branches": {
         }
       },
-      "/home/ec2-user/environment/myapp/app/helpers/application_helper.rb": {
+      "/myproject/app/helpers/application_helper.rb": {
         "lines": [
           0,
           0,
@@ -791,47 +858,7 @@
         "branches": {
         }
       },
-      "/home/ec2-user/environment/myapp/app/helpers/comments_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/helpers/likes_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/helpers/follow_relationships_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/helpers/microposts_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/helpers/favorite_relationships_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/mailers/application_mailer.rb": {
+      "/myproject/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -841,25 +868,7 @@
         "branches": {
         }
       },
-      "/home/ec2-user/environment/myapp/app/jobs/application_job.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/channels/application_cable/connection.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/ec2-user/environment/myapp/app/channels/application_cable/channel.rb": {
+      "/myproject/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -870,6 +879,6 @@
         }
       }
     },
-    "timestamp": 1586526382
+    "timestamp": 1586863247
   }
 }

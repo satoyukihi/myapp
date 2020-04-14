@@ -13,20 +13,21 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  database: c9
-  username: <%=ENV['C9_USER']%>
-  host: <%=ENV['IP']%>
+  username: yuki
+  password: password
 
 development:
   <<: *default
-  database: app_development
+  host: db
+  database: docker_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: app_test
+  host: test-db
+  database: docker_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

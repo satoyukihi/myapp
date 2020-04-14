@@ -65,16 +65,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  config.before(:each) do |example|
-    if example.metadata[:type] == :system
-      if example.metadata[:js]
-        driven_by :selenium_chrome_headless, screen_size: [500, 500]
-      else
-        driven_by :rack_test
-      end
-    end
-  end
-
   # テストユーザーとしてログインする
   def log_in_as(user)
     session[:user_id] = user.id
