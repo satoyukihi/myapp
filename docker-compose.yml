@@ -27,11 +27,13 @@ services:
       dockerfile: Dockerfile
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     tty: true #pry-byebugを使えるようにする
+    environment:
+      # selenium chrome headlessこの環境変数を追加
+      - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
     stdin_open: true
     depends_on:
       - db # DB側のコンテナが出来上がってからwebを実行する
       - test-db
-      - selenium_chrome
     ports:
       - "3000:3000" # ホストからゲストへポートフォワード
     volumes:
@@ -39,7 +41,5 @@ services:
 
   selenium_chrome:
     image: selenium/standalone-chrome-debug
-    ports:
-      - 4444:4444
     logging:
       driver: none
