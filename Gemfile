@@ -50,6 +50,3 @@ group :production do
   gem 'fog-aws'
   gem 'unicorn'
 end
-
-# Windows環境ではtzinfo-dataというgemを含める必要があります
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

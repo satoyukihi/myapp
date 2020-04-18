@@ -16,6 +16,7 @@ COPY Gemfile /myproject/Gemfile
 COPY Gemfile.lock /myproject/Gemfile.lock
 
 RUN gem install bundler
-RUN bundle install --without production
+#production用のGem外す
+RUN bundle install 
 
 COPY . /myproject
