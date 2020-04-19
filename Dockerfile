@@ -10,13 +10,12 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /myproject
+WORKDIR /var/www/rails/myapp
 
-COPY Gemfile /myproject/Gemfile
-COPY Gemfile.lock /myproject/Gemfile.lock
+COPY Gemfile /var/www/rails/myapp/Gemfile
+COPY Gemfile.lock /var/www/rails/myapp/Gemfile.lock
 
 RUN gem install bundler
-#production用のGem外す
 RUN bundle install 
 
-COPY . /myproject
+COPY . /var/www/rails/myapp
