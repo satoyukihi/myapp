@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bcrypt', '3.1.12'
 gem 'bootstrap', '~>4.1.1'
+gem 'puma', '3.9.1'
 gem 'carrierwave', '1.2.2'
 gem 'coffee-rails', '4.2.2'
 gem 'font-awesome-sass', '~> 5.4.1'
