@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    # docker-composeがインストール済みの仮想マシンをプル
+    # docker-composeがインストール済み仮想マシンをプル
     machine:
       image: circleci/classic:edge
     steps:
