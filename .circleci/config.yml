@@ -1,20 +1,23 @@
 version: 2
 jobs:
   build:
-    # docker-composeがインストール済み仮想マシンをプル
+    # docker-composeがインストール済みの仮想マシンをプル
     machine:
       image: circleci/classic:edge
     steps:
       - checkout
       - run:
+        name: ディレクトリの移動
+        command: cd dockertest
+      - run:
           name: Dockerコンテナのビルド
-          command: docker-compose build
+          command: docker-compose -f docker-compose.test.yml build
       - run:
           name: Dockerコンテナの起動
-          command: docker-compose up -d
+          command: docker-compose -f docker-compose.test.yml up -d
       - run:
           name: データベースのセットアップ
-          command: docker-compose exec web bundle exec rails db:migrate RAILS_ENV=test
+          command: docker-compose exec web bundle exec rails db:migrate
       - run:
           name: RSpecテスト実行
           command: docker-compose exec web bundle exec bin/rspec
@@ -23,4 +26,4 @@ jobs:
           command: docker-compose exec web bundle exec rubocop
       - run:
           name: Dockerコンテナの停止
-          command: docker-compose down
+          command: docker-compose -f docker-compose.test.yml down
