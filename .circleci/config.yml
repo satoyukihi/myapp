@@ -12,20 +12,14 @@ jobs:
             rm ./config/database.yml
             mv ./config/database.ci.yml ./config/database.yml
       - run:
-          name: Setup dockerize
-          command: bash .circleci/setup-dockerize.sh
-      - run:
           name: Dockerコンテナのビルド
           command: docker-compose -f dockertest/docker-compose.test.yml build
       - run:
           name: Dockerコンテナの起動
           command: docker-compose -f dockertest/docker-compose.test.yml up -d
       - run:
-          name: db待機
-          command: dockerize -wait tcp://127.0.0.1:3307 -timeout 1m
-      - run:
-          name: sleep for waiting launch db
-          command: sleep 30
+          name: db接続を待機
+          command: sleep 10
       - run:
           name: データベースのセットアップ
           command: docker-compose -f dockertest/docker-compose.test.yml exec web bundle exec rails db:migrate RAILS_ENV=test

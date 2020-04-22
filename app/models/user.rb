@@ -31,10 +31,6 @@ class User < ApplicationRecord
   # authenticateメゾットが使える。パスワード一致でUserオブジェクトを返す。パスワードのバリテーションも追加
   has_secure_password
 
-  def feed
-    Micropost.where('user_id = ?', id)
-  end
-
   # マイクロポストをライクする
   def like(micropost)
     likes << micropost

@@ -77,7 +77,5 @@ RSpec.describe 'Comments', type: :system do
       end.to change(Comment, :count).by(-1)
     end
   end
-
-  it 'ユーザーを削除すると関連するコメントも削除される'
-  it 'マイクロポストを消すと関連するコメントも削除される'
+  
 end
