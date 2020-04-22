@@ -7,23 +7,23 @@ jobs:
     steps:
       - checkout
       - run:
-        name: ディレクトリの移動
-        command: cd dockertest
-      - run:
           name: Dockerコンテナのビルド
-          command: docker-compose -f docker-compose.test.yml build
+          command: docker-compose -f dockertest/docker-compose.test.yml build
       - run:
           name: Dockerコンテナの起動
-          command: docker-compose -f docker-compose.test.yml up -d
+          command: docker-compose -f dockertest/docker-compose.test.yml up -d
+    - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://3306 -timeout 1m
       - run:
           name: データベースのセットアップ
-          command: docker-compose exec web bundle exec rails db:migrate
+          command: docker-compose -f dockertest/docker-compose.test.yml exec web bundle exec rails db:migrate RAILS_ENV=test
       - run:
           name: RSpecテスト実行
-          command: docker-compose exec web bundle exec bin/rspec
+          command: docker-compose -f dockertest/docker-compose.test.yml exec web bundle exec bin/rspec
       - run:
           name: Rubocopテスト実行
-          command: docker-compose exec web bundle exec rubocop
+          command: docker-compose -f dockertest/docker-compose.test.yml exec web bundle exec rubocop
       - run:
           name: Dockerコンテナの停止
-          command: docker-compose -f docker-compose.test.yml down
+          command: docker-compose -f dockertest/docker-compose.test.yml down
