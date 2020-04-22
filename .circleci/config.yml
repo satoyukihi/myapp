@@ -26,7 +26,7 @@ jobs:
       - run:
           name: sleep for waiting launch db
           command: sleep 30
-          - run:
+      - run:
           name: データベースのセットアップ
           command: docker-compose -f dockertest/docker-compose.test.yml exec web bundle exec rails db:migrate RAILS_ENV=test
       - run:
