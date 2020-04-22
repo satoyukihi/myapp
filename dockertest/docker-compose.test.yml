@@ -4,6 +4,7 @@ services:
     build:
       context: ../
       dockerfile: Dockerfile.test
+    command: dockerize -wait tcp://test-db:3306 bundle exec rails s -p 3000 -b '0.0.0.0'
     tty: true #pry-byebugを使えるようにする
     stdin_open: true
     depends_on:
