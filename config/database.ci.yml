@@ -4,6 +4,6 @@ test:
     pool: 5
     username: yuki
     port: 3306
-    host: 127.0.0.1
+    host: test-db
     database: docker_test
     password: password
