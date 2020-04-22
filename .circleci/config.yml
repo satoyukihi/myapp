@@ -24,6 +24,9 @@ jobs:
           name: db待機
           command: dockerize -wait tcp://127.0.0.1:3307 -timeout 1m
       - run:
+          name: sleep for waiting launch db
+          command: sleep 30
+          - run:
           name: データベースのセットアップ
           command: docker-compose -f dockertest/docker-compose.test.yml exec web bundle exec rails db:migrate RAILS_ENV=test
       - run:
