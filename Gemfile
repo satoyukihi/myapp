@@ -43,8 +43,6 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'simplecov', require: false, group: :test
-
 group :production do
   gem 'fog-aws'
 end
