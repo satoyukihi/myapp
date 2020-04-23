@@ -9,7 +9,11 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'simplecov'
 
+#Coverageを使用50%を下回ったら警告
 SimpleCov.start 'rails'
+SimpleCov.minimum_coverage 50
+SimpleCov.print_error_status = false
+
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -64,7 +68,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-
+  
   # テストユーザーとしてログインする
   def log_in_as(user)
     session[:user_id] = user.id
