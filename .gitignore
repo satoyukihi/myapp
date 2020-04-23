@@ -16,10 +16,11 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/public/uploads/tmp
+/public/uploads/
+/coverage/*
 
 /node_modules
 /yarn-error.log
-
+/nginx/log
 .byebug_history
 README

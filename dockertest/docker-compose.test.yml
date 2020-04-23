@@ -1,0 +1,33 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ../
+      dockerfile: Dockerfile.test
+    tty: true #pry-byebugを使えるようにする
+    stdin_open: true
+    depends_on:
+      - test-db
+      - selenium_chrome
+    ports:
+      - "3001:3000"
+    volumes:
+      - ..:/var/www/rails/myapp:cached # ソースコード変更したらDocker側も即反映されるように
+
+  test-db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MYSQL_DATABASE: docker_test
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: yuki
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    ports:
+      - "4444:4444"
+    logging:
+      driver: none

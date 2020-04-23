@@ -1,0 +1,9 @@
+test:
+    adapter: mysql2
+    encoding: utf8
+    pool: 5
+    username: yuki
+    port: 3306
+    host: test-db
+    database: docker_test
+    password: password

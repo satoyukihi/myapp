@@ -5,7 +5,7 @@ gem 'bootstrap', '~>4.1.1'
 gem 'carrierwave', '1.2.2'
 gem 'coffee-rails', '4.2.2'
 gem 'font-awesome-sass', '~> 5.4.1'
-gem 'jbuilder',     '2.7.0'
+gem 'jbuilder', '2.7.0'
 gem 'jquery-rails', '4.3.1'
 gem 'kaminari'
 gem 'mini_magick', '4.7.0'
@@ -16,6 +16,7 @@ gem 'rails-i18n'
 gem 'sass-rails',   '5.0.6'
 gem 'turbolinks',   '5.0.1'
 gem 'uglifier',     '3.2.0'
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri
@@ -36,17 +37,12 @@ end
 group :test do
   gem 'capybara', '~> 2.15.4'
   gem 'guard', '2.13.0'
-  gem 'guard-minitest', '2.4.4'
   gem 'launchy'
-  gem 'minitest', '5.10.3'
-  gem 'minitest-reporters', '1.1.14'
   gem 'rails-controller-testing', '1.0.2'
   gem 'selenium-webdriver'
-  gem 'simplecov'
   gem 'webdrivers'
 end
 
 group :production do
   gem 'fog-aws'
-  gem 'unicorn'
 end
