@@ -26,11 +26,11 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   # 空でない＋最小6文字＋ユーザー情報編集の際にパスワードがからでもOK
-  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])\w{6,12}\z/
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/.freeze
   validates :password, presence: true,
-            allow_nil: true,
-            format: { with: VALID_PASSWORD_REGEX,
-             message: "は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
+                       allow_nil: true,
+                       format: { with: VALID_PASSWORD_REGEX,
+                                 message: 'は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります' }
 
   # authenticateメゾットが使える。パスワード一致でUserオブジェクトを返す。パスワードのバリテーションも追加
   has_secure_password
