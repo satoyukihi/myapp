@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
     @user = User.new(
       name: 'Aaron',
       email: 'tster@example.com',
-      password: 'foobar',
-      password_confirmation: 'foobar'
+      password: 'foobar12A',
+      password_confirmation: 'foobar12A'
     )
   end
 
@@ -36,8 +36,8 @@ RSpec.describe User, type: :model do
     User.create(
       name: 'Aaron',
       email: 'tster@example.com',
-      password: 'foobar',
-      password_confirmation: 'foobar'
+      password: 'foobarA12',
+      password_confirmation: 'foobarA12'
     )
 
     user = User.new(
@@ -66,8 +66,8 @@ RSpec.describe User, type: :model do
     user = User.create(
       name: 'Aaron',
       email: 'TSTeR@Example.com',
-      password: 'foobar',
-      password_confirmation: 'foobar'
+      password: 'foobar12A',
+      password_confirmation: 'foobar12A'
     )
     expect(user.email).to eq 'tster@example.com'
   end
@@ -78,10 +78,34 @@ RSpec.describe User, type: :model do
     expect(user.errors[:password]).to include('を入力してください')
   end
 
-  it 'パスワードが5文字以下なら無効な状態であること' do
-    user = User.new(password: 'a' * 5, password_confirmation: 'a' * 5)
+  it 'パスワードに英小文字が含まれない場合無効な状態であること' do
+    user = User.new(password: '1'+'A' * 5, password_confirmation: '1A'+'a' * 3)
     user.valid?
-    expect(user.errors[:password]).to include('は6文字以上で入力してください')
+    expect(user.errors[:password]).to include('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+  end
+
+  it 'パスワードに英大文字が含まれない場合無効な状態であること' do
+    user = User.new(password: '1'+'a' * 5, password_confirmation: '1A'+'a' * 3)
+    user.valid?
+    expect(user.errors[:password]).to include('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+  end
+
+  it 'パスワードに数字が含まれない場合無効な状態であること' do
+    user = User.new(password: 'A'+'a' * 5, password_confirmation: '1A'+'a' * 3)
+    user.valid?
+    expect(user.errors[:password]).to include('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+  end
+
+  it 'パスワードが5文字以下なら無効な状態であること' do
+    user = User.new(password: '1A'+'a' * 3, password_confirmation: '1A'+'a' * 3)
+    user.valid?
+    expect(user.errors[:password]).to include('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+  end
+
+  it 'パスワードが13文字以上なら無効な状態であること' do
+    user = User.new(password: '1A'+'a' * 11, password_confirmation: '1A'+'a' * 11)
+    user.valid?
+    expect(user.errors[:password]).to include('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
   end
 
   it 'ユーザー情報編集の時はパスワードがなくても編集できること' do # allow_nilをコメントアウトしてもテスト通るからそのうち考える
@@ -94,12 +118,12 @@ RSpec.describe User, type: :model do
   end
 
   it 'パスワードとパスワード確認が一致しないなら無効な状態であること' do
-    user = User.new(password: 'foobar', password_confirmation: 'foobarrrr')
+    user = User.new(password: 'foobar12A', password_confirmation: 'foobarrrr12A')
     user.valid?
     expect(user.errors[:password_confirmation]).to include('とパスワードの入力が一致しません')
   end
 
   it 'パスワードが一致すればUserオブジェクトを返すこと' do
-    expect(@user.authenticate('foobar')).to eq @user
+    expect(@user.authenticate('foobar12A')).to eq @user
   end
 end
