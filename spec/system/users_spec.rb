@@ -27,8 +27,8 @@ RSpec.describe 'Users', type: :system do
           click_link '新規ユーザー登録'
           fill_in 'user[name]', with: 'yuki'
           fill_in 'user[email]', with: 'test@example.com'
-          fill_in 'user[password]', with: 'foobar'
-          fill_in 'user[password_confirmation]', with: 'foobar'
+          fill_in 'user[password]', with: 'foobar12A'
+          fill_in 'user[password_confirmation]', with: 'foobar12A'
           click_button '作成'
 
           expect(page).to have_content 'ユーザー登録完了！Myごはんへようこそ！！'
