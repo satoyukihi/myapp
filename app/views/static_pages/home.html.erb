@@ -1,40 +1,60 @@
 <% provide(:title,"top_page") %>
 
-  
-  
+<% if !logged_in? %>
+<div class="home">
+  <h1>ようこそMyごはんへ。</h1>
+  <h5>みんなと料理をシェアしよう。</h5>
+  <P>お肉料理お魚料理なんでもOK！</P>
+  <p>今日の献立に困ったら皆の投稿を参考にしよう！</p>
   <% if !logged_in? %>
-  <div class="home">
-      <h1>ようこそMyごはんへ。</h1>
-      <h5>みんなと料理をシェアしよう。</h5>
-      <P>お肉料理お魚料理なんでもOK！</P>
-      <p>今日の献立に困ったら皆の投稿を参考にしよう！</p>
-      <% if !logged_in? %>
-      <p><%= link_to "Myごはんを始める>", "signup", class:"btn" %></p>
-      <% end %>
-  </div>
+  <p><%= link_to "Myごはんを始める>", "signup", class:"btn" %></p>
   <% end %>
+</div>
+<% end %>
 
-
-  <div class="microposts">
-    <ol class="microposts">
-      <%= link_to "新規投稿!",new_micropost_path , class:"btn page-link text-dark d-inline-block fas fa-pen home12" %></p>
-      <div style="display:inline-flex">
-      <%= render 'tag_search'%>
-      <%= render 'title_search'%>
-      <% if logged_in? %>
-        <p><%= link_to "フォローのみ表示", feed_user_path(current_user), class:"btn" %></p>
-      <% end %>
-        <% if@microposts.any? %>
+<div class="microposts">
+  <ol class="microposts">
+    <div class="row">
+      <div class="col-lg-3 offset-lg-1">
+        <%= link_to "新規投稿!",new_micropost_path , class:"btn page-link text-dark d-inline-block fas fa-pen home12" %>
       </div>
-　        <!--<div>
+    </div>
+
+
+
+    <div class="row">
+
+      <div class="col-lg-11 offset-lg-1">
+        <div style="display:inline-flex">
+        <%= render 'tag_search'%>
+        <%= render 'title_search'%>
+      </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-lg-8 offset-lg-1">
+        <% if logged_in? %>
+        <p><%= link_to "フォローしているユーザーの投稿のみ表示", feed_user_path(current_user), class:"btn" %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <% if@microposts.any? %>
+      <!--<div>
 　          <%= paginate @microposts %><%= page_entries_info @microposts%>
 　        </div>-->
-            <%= render @microposts%>
-            <%= paginate @microposts %>
-         </ol>
-       <% else %>
-         <P>投稿がありません</P>
-       <% end %>
-  </div>
-  
-  
+      <div class="col-lg-10 offset-lg-1">
+        <%= render @microposts%>
+        <%= paginate @microposts %>
+      </div>
+    </div>
+  </ol>
+  <% else %>
+  <P>投稿がありません</P>
+  <% end %>
+</div>
