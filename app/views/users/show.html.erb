@@ -7,40 +7,44 @@
 
     <p class="show_name">ユーザ名</p>
     <p class="show_user_name"><%= @user.name %></p>
-    
+
     <% if logged_in? && @user != current_user%>
-      <%= render "follow_form" %>
+    <%= render "follow_form" %>
     <% end %>
-    
+
     <div class="user_show">
-　    <p><%= link_to "いいね一覧(#{@user.likes.count})", likes_user_path(@user)%></p>
-　    <p><%= link_to "フォロー(#{@user.followings.count})", followings_user_path(@user)%>
-/ <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user)%></p>
-  
+      　 <p><%= link_to "いいね一覧(#{@user.likes.count})", likes_user_path(@user)%></p>
+      　 <p><%= link_to "フォロー(#{@user.followings.count})", followings_user_path(@user)%>
+        / <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user)%></p>
+
       <% if current_user?(@user) %>
-        <p><%= link_to("編集ページへ","/users/#{@user.id}/edit") %><p>
-      <% end %>
- 
-      <% if admin_user? || current_user?(@user)%>
-        <p><%= link_to "ユーザー削除", @user, method: :delete,
+      <p><%= link_to("編集ページへ","/users/#{@user.id}/edit") %>
+      <p>
+        <% end %>
+
+        <% if admin_user? || current_user?(@user)%>
+      <p><%= link_to "ユーザー削除", @user, method: :delete,
                                 data: { confirm: "ユーザーを削除しますか?" } %></p>
       <% end %>
-     </div>
-   </div>
-</div>
-    
-  <div class="microposts">
-    <% if @user.microposts.any? %>
-       <ol class="micro">
-         <%= link_to "新規投稿!",new_micropost_path , class:"btn page-link text-dark d-inline-block fas fa-pen" %></p>
-          <%= page_entries_info @microposts%>
-          <%=paginate @microposts %>
-          <%= render @microposts %>
-          <%=paginate @microposts %>
-      </ol>
-    <% end %>
+    </div>
   </div>
+</div>
 
-
-
-  
+<div class="microposts">
+  <% if @user.microposts.any? %>
+  <ol class="micro">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <%= link_to "新規投稿!",new_micropost_path , class:"btn page-link text-dark d-inline-block fas fa-pen" %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <%= page_entries_info @microposts%>
+        <%= render @microposts %>
+        <%=paginate @microposts %>
+      </div>
+    </div>
+  </ol>
+  <% end %>
+</div>

@@ -45,9 +45,6 @@
 
     <div class="row">
       <% if@microposts.any? %>
-      <!--<div>
-　          <%= paginate @microposts %><%= page_entries_info @microposts%>
-　        </div>-->
       <div class="col-lg-10 offset-lg-1">
         <%= render @microposts%>
         <%= paginate @microposts %>

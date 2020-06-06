@@ -1,0 +1,7 @@
+<div class="row">
+    <% if@microposts.any? %>
+    <div class="col-lg-10 offset-lg-1">
+      <%= render @microposts%>
+      <%= paginate @microposts %>
+    </div>
+  </div>

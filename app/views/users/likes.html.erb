@@ -1,12 +1,14 @@
-<% content_for(:html_title) { 'Myごはん-いいね一覧' } %>
+<% provide(:title,"いいね一覧") %>
 <div class="microposts">
     <% if @user.microposts.any? %>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
        <ol class="micro">
-         <%= link_to "新規投稿",new_micropost_path , class:"btn page-link text-dark d-inline-block" %></p>
           <%= page_entries_info @microposts%>
-          <%=paginate @microposts %>
           <%= render @microposts %>
           <%=paginate @microposts %>
       </ol>
+    </div>
+  </div>
     <% end %>
   </div>
