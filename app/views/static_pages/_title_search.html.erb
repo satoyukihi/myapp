@@ -1,7 +1,9 @@
 <form class="form-inline">
+  <div style="display:inline-flex">
 <%= form_with(url: root_path, class: 'search_searchForm', method: :get, local:true) do |f| %>
   <%= f.text_field :search,value: params[:search],class: 'form-control  title_search',\
   placeholder: "投稿を検索できます。"%><%= f.submit '検索', class: "btn badge-primary title_search_btn" %>
+</div>
 <% end %>
 </form>
 
